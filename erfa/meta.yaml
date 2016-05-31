@@ -1,0 +1,22 @@
+{% set name = 'erfa' %}
+{% set version = '1.2.0' %}
+{% set tag = 'v' + version %}
+{% set number = '0' %}
+
+about:
+    home: https://github.com/liberfa/{{ name }} 
+    license: BSD
+    summary: Essential Routines for Fundamental Astronomy
+build:
+    number: {{ number }}
+package:
+    name: {{ name }}
+    version: {{ version }}
+source:
+    git_tag: {{ tag }}
+    git_url: https://github.com/liberfa/{{ name }}
+requirements:
+    build:
+    - autoconf [osx]
+    - automake [osx]
+    - libtool [osx]
