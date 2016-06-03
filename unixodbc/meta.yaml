@@ -1,0 +1,26 @@
+{% set name = 'unixodbc' %}
+{% set version = '2.3.4' %}
+{% set number = '0' %}
+
+about:
+    home: https://unixodbc.org
+    license: GPL
+    summary: ODBC
+build:
+    number: {{ number }}
+package:
+    name: {{ name }}
+    version: {{ version }}
+requirements:
+    build:
+    - autoconf [osx]
+    - automake [osx]
+    - m4 [osx]
+    - libtool [osx]
+    - pkgconfig
+    - readline [osx]
+    run:
+    - readline [osx]
+source:
+    fn: unixODBC-{{ version }}.tar.gz
+    url: ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-{{ version }}.tar.gz

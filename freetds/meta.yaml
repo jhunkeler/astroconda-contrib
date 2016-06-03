@@ -1,0 +1,27 @@
+{% set name = 'freetds' %}
+{% set version = '0.95' %}
+{% set tag = 'R0_95' %}
+{% set number = '0' %}
+
+about:
+    home: https://github.com/FreeTDS/freetds
+    license: GPL
+    summary: A free implementation of Sybase DB-Library, CT-Library, and ODBC libraries
+build:
+    number: {{ number }}
+package:
+    name: {{ name }}
+    version: {{ version }}
+requirements:
+    build:
+    - autoconf [osx]
+    - automake [osx]
+    - m4 [osx]
+    - libtool [osx]
+    - pkgconfig
+    - unixodbc
+    run:
+    - unixodbc
+source:
+    git_tag: {{ tag }}
+    git_url: https://github.com/FreeTDS/freetds.git

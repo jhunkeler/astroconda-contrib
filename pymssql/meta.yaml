@@ -1,0 +1,33 @@
+{% set name = 'pymssql' %}
+{% set version = '2.1.2' %}
+{% set tag = 'v' + version %}
+{% set number = '0' %}
+
+about:
+    home: http://pymssql.org
+    license: GNU Library or Lesser General Public License (LGPL)
+    summary: 'DB-API interface to Microsoft SQL Server for Python. (new Cython-based version)'
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+
+source:
+    git_tag: {{ tag }} 
+    git_url: https://github.com/pymssql/{{ name }}
+
+requirements:
+    build:
+    - purge_path
+    - cython
+    - freetds
+    - setuptools
+    - python x.x
+    run:
+    - cython
+    - freetds
+    - python x.x
+
+test:
+    imports:
+    - {{ name }}
