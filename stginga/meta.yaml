@@ -1,28 +1,34 @@
+{% set name = 'stginga' %}
+{% set version = 'TBD' %}
+{% set tag = 'v'+version %}
+{% set number = '0' %}
+
 about:
-    home: https://github.com/spacetelescope/stginga
+    home: https://github.com/spacetelescope/{{ name }}
     license: BSD
-    summary: stginga
+    summary: Ginga products specific to STScI data analysis
 build:
-    number: '{{ environ.get("GIT_DESCRIBE_NUMBER", 0) }}'
+    number: {{ number }}
 package:
-    name: stginga
-    version: '{{ environ.get("GIT_DESCRIBE_TAG", "0.0.0") }}'
+    name: {{ name }}
+    version: {{ version }}
 requirements:
     build:
     - ginga
-    - astropy >=1.1
+    - astropy >=1.2
     - numpy x.x
     - scipy
     - setuptools
     - python x.x
     run:
     - ginga
-    - astropy >=1.1
+    - astropy >=1.2
     - numpy x.x
     - scipy
     - python x.x
 source:
-    git_url: https://github.com/spacetelescope/stginga
+    git_tag: {{ tag }}
+    git_url: https://github.com/spacetelescope/{{ name }}.git
 test:
     imports:
     - stginga
