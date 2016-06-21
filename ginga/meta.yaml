@@ -1,25 +1,28 @@
+{% set name = 'ginga' %}
+{% set verison = 'TBD' %}
+{% set number = '0' %}
 about:
-    home: https://github.com/ejeschke/ginga
+    home: https://github.com/ejeschke/{{ name }}
     license: BSD
-    summary: ginga
+    summary: FITS file viewer
 build:
     number: '0'
 package:
-    name: ginga
-    version: 2.5.20151215011852
+    name: {{ name }}
+    version: {{ version }}
 requirements:
     build:
-    - numpy x.x
+    - astropy >=1.2
     - setuptools
+    - numpy x.x
     - python x.x
     run:
+    - astropy >=1.2
     - numpy x.x
     - python x.x
 source:
-    fn: ginga-2.5.20151215011852.tar.gz
-    md5: 11cd8b9ed459c4438cc827e0a1ca4538
-    url:
-    - https://pypi.python.org/packages/source/g/ginga/ginga-2.5.20151215011852.tar.gz
+    git_rev: TBD
+    git_url: https://github.com/ejeschke/{{ name }}.git
 test:
     imports:
     - ginga
