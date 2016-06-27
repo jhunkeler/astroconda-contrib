@@ -1,6 +1,6 @@
 {% set name = 'stginga' %}
-{% set version = 'TBD' %}
-{% set tag = 'v'+version %}
+{% set version = '0.1' %}
+{% set tag = version %}
 {% set number = '0' %}
 
 about:
