@@ -3,7 +3,7 @@ about:
     license: GPL
     summary: stsci.sphere
 build:
-    number: '0'
+    number: '1'
     preserve_egg_dir: 'yes'
 package:
     name: stsci.sphere
@@ -23,7 +23,7 @@ requirements:
     - numpy x.x
     - python x.x
 source:
-    git_url: ssh://git@bitbucket.org/stsci_ssb/stsci.sphere
+    git_url: https://bitbucket.org/stsci_ssb/stsci.sphere
 test:
     imports:
     - stsci.sphere
