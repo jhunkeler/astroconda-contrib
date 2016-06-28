@@ -3,7 +3,7 @@ about:
     license: MIT
     summary: A collection of tools for Python
 build:
-    number: '0'
+    number: '1'
 package:
     name: pytools
     version: '2016.1'
@@ -12,14 +12,14 @@ requirements:
     - decorator >=3.2.0
     - appdirs >=1.4.0
     - six >=1.8.0
-    - numpy >=1.6.0
     - setuptools
+    - numpy x.x
     - python x.x
     run:
     - decorator >=3.2.0
     - appdirs >=1.4.0
     - six >=1.8.0
-    - numpy >=1.6.0
+    - numpy x.x
     - python x.x
 source:
     fn: pytools-2016.1.tar.gz
