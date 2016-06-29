@@ -10,21 +10,21 @@ package:
 requirements:
     build:
     - astropy >=1.1
-    - specview ==0.1
-    - astroimtools ==0.1
-    - cube-tools ==0.0.0
-    - stginga ==0.1
-    - asv ==0.1.1
-    - asdf ==1.0.2
+    - specview >=0.1
+    - astroimtools >=0.1
+    - cube-tools >=0.0.0
+    - stginga >=0.1
+    - asv >=0.1.1
+    - asdf >=1.0.2
     - numpy x.x
     - python x.x
     run:
     - astropy >=1.1
-    - specview ==0.1
-    - astroimtools ==0.1
-    - cube-tools ==0.0.0
-    - stginga ==0.1
-    - asv ==0.1.1
-    - asdf ==1.0.2
+    - specview >=0.1
+    - astroimtools >=0.1
+    - cube-tools >=0.0.0
+    - stginga >=0.1
+    - asv >=0.1.1
+    - asdf >=1.0.2
     - numpy x.x
     - python x.x
