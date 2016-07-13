@@ -3,7 +3,7 @@ about:
     license: GPL
     summary: Python connection to SAOimage DS9 via XPA
 build:
-    number: '0'
+    number: '1'
 package:
     name: pyds9
     version: 1.8.1
@@ -22,7 +22,7 @@ requirements:
     - numpy x.x
     - python x.x
 source:
-    git_tag: v1.8
+    git_tag: v1.8.1
     git_url: https://github.com/ericmandel/pyds9
 test:
     imports:
