@@ -1,0 +1,46 @@
+{% set name = 'owl' %}
+{% set version = '1.1' %}
+{% set number = '0' %}
+
+about:
+    # Package homepage
+    home: 'https://github.com/fpierfed/owl'
+    # Package license
+    license: BSD
+    # A brief description
+    summary: OWL is a pipeline\/workflow execution framework
+
+package:
+    # Define these values above
+    name: {{ name }}
+    version: {{ version }}
+
+build:
+    # Define this value above
+    number: {{ number }}
+
+source:
+    git_url: https://github.com/fpierfed/{{ name }}.git
+
+requirements:
+    build:
+    # Dependencies required at BUILD-TIME go here
+    - jinja2
+    - sqlalchemy
+    - drmaa
+    - setuptools
+    - python x.x
+    run:
+    # Dependencies required at RUN-TIME go here
+    # - ...
+    - jinja2
+    - sqlalchemy
+    - drmaa
+    - python x.x
+
+#test:
+#   imports:
+#   # - (e.g. a_python_module)
+#
+#   commands:
+#   # - (e.g. program --help)
