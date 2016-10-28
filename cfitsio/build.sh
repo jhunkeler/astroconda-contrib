@@ -1,3 +1,4 @@
-
-./configure --prefix=$PREFIX --disable-static --enable-reentrant
-(make -j $CPU_COUNT shared && make install) || exit 1
+./configure --prefix=$PREFIX --enable-reentrant
+make -j${CPU_COUNT}
+make shared
+make install

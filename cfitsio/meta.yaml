@@ -17,6 +17,12 @@ package:
     name: {{ name }}
     version: {{ version }}
 
+requirements:
+    build:
+    - gcc [osx]
+    run:
+    - libgcc [osx]
+
 source:
     fn: {{ name }}{{ version_short }}.tar.gz
     url: ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/{{ name }}{{ version_short }}.tar.gz
