@@ -1,0 +1,30 @@
+{% set name = 'llvm-libs' %}
+{% set version = '3.9.0' %}
+{% set number = '0' %}
+
+about:
+    home: http://llvm.org
+    license: BSD
+    summary: LLVM collection libraries
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+
+build:
+    number: {{ number }}
+    always_include_files:
+    - lib/libLLVM.dylib [osx]
+    - lib/libLTO.dylib [osx]
+    - lib/libclang.dylib [osx]
+    - lib/libomp.dylib [osx]
+    - lib/libgomp.dylib [osx]
+    - lib/libiomp5.dylib [osx]
+    - lib/BugpointPasses.dylib [osx]
+
+requirements:
+    build:
+    - llvm {{version}}
+    - llvm-clang {{version}}
+    - llvm-clang-openmp {{version}}
+

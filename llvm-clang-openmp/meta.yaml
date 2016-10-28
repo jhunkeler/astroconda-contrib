@@ -1,0 +1,38 @@
+{% set name = 'llvm-clang-openmp' %}
+{% set version = '3.9.0' %}
+{% set number = '0' %}
+
+about:
+    home: http://llvm.org
+    license: BSD
+    summary: LLVM clang OpenMP package
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+
+build:
+    number: {{ number }}
+
+source:
+    fn: {{ name }}-{{ version }}.src.tar.gz
+    url: http://llvm.org/releases/{{version}}/openmp-{{version}}.src.tar.xz
+
+requirements:
+    build:
+    - cmake >=3.6
+    - llvm {{version}}
+    - llvm-clang {{version}}
+    - setuptools
+    - python x.x
+
+    run:
+    - llvm {{version}}
+    - llvm-clang {{version}}
+
+#test:
+#   imports:
+#   # - (e.g. a_python_module)
+#
+#   commands:
+#   # - (e.g. program --help)

@@ -1,0 +1,36 @@
+{% set name = 'llvm-clang' %}
+{% set version = '3.9.0' %}
+{% set number = '0' %}
+
+about:
+    home: http://llvm.org
+    license: BSD
+    summary: LLVM clang package
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+
+build:
+    number: {{ number }}
+
+source:
+    fn: {{ name }}-{{ version }}.src.tar.gz
+    url: http://llvm.org/releases/{{version}}/cfe-{{version}}.src.tar.xz
+
+requirements:
+    build:
+    - cmake >=3.6
+    - llvm {{version}}
+    - setuptools
+    - python x.x
+
+    run:
+    - llvm {{version}}
+
+#test:
+#   imports:
+#   # - (e.g. a_python_module)
+#
+#   commands:
+#   # - (e.g. program --help)
