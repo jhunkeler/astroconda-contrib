@@ -16,9 +16,14 @@ package:
 
 requirements:
     build:
+    - pkg-config
+    - cfitsio
+    - llvm-clang-openmp [osx]
     - gcc >=4.6 [osx]
     run:
+    - cfitsio
     - libgcc >=4.6 [osx]
+    - llvm-libs >=3.9.0 [osx]
 
 source:
     git_tag: {{ version }}
