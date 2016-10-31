@@ -1,0 +1,65 @@
+package:
+  name: lit
+  version: "0.5.0"
+
+source:
+  fn: lit-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/5b/a0/dbed2c8dfb220eb9a5a893257223cd0ff791c0fbc34ce2f1a957fa4b6c6f/lit-0.5.0.tar.gz
+  md5: 8144660cc692be8fb903395a5f06564d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lit = lit:main
+    #
+    # Would create an entry point called lit that calls lit.main()
+
+    - lit = lit:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - lit
+    - lit.formats
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://llvm.org
+  license: University of Illinois/NCSA Open Source License
+  summary: 'A Software Testing Tool'
+  license_family: Proprietary
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
