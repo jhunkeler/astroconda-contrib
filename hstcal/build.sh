@@ -7,7 +7,7 @@ fi
 ./waf build
 =======
 export CC=$PREFIX/bin/clang
-export CFLAGS="-fopenmp=libiomp5 -I`llvm-config --includedir` -I$PREFIX/include $CFLAGS"
+export CFLAGS="-fopenmp=libomp -I`llvm-config --includedir` -I$PREFIX/include $CFLAGS"
 export LDFLAGS="-L`llvm-config --libdir` -L$PREFIX/lib $LDFLAGS"
 
 if [ -n "$MACOSX_DEPLOYMENT_TARGET" ]; then
