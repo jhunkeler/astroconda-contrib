@@ -14,17 +14,41 @@ package:
 build:
     number: {{ number }}
     always_include_files:
-    - lib/libLLVM.dylib [osx]
-    - lib/libLTO.dylib [osx]
-    - lib/libclang.dylib [osx]
-    - lib/libomp.dylib [osx]
-    - lib/libgomp.dylib [osx]
-    - lib/libiomp5.dylib [osx]
     - lib/BugpointPasses.dylib [osx]
+    - lib/LLVMHello.dylib [osx]
+    - lib/LLVMPolly.dylib [osx]
+    - lib/libLTO.dylib [osx]
+    - lib/libc++.dylib [osx]
+    - lib/libc++abi.dylib [osx]
+    - lib/libclang.dylib [osx]
+    - lib/liblldb.dylib [osx]
+    - lib/libomp.dylib [osx]
+    - lib/libiomp5.dylib [osx]
+    - lib/libunwind.dylib [osx]
+
+    - lib/BugpointPasses.so [linux]
+    - lib/LLVMHello.so [linux]
+    - lib/LLVMPolly.so [linux]
+    - lib/libLTO.so [linux]
+    - lib/libc++.so [linux]
+    - lib/libc++.so.1.0 [linux]
+    - lib/libc++abi.so [linux]
+    - lib/libc++abi.so.1.0 [linux]
+    - lib/libclang.so [linux]
+    - lib/libclang.so.3.9 [linux]
+    - lib/liblldb.so [linux]
+    - lib/liblldb.so.3.9.0 [linux]
+    - lib/libomp.so [linux]
+    - lib/libgomp.so [linux]
+    - lib/libgomp.so.1 [linux]
+    - lib/libgomp.so.1.0.0 [linux]
+    - lib/libiomp5.so [linux]
+    - lib/libunwind.so [linux]
+    - lib/libunwind.so.1.0 [linux]
 
 requirements:
     build:
     - llvm {{version}}
-    - llvm-clang {{version}}
-    - llvm-clang-openmp {{version}}
+    run:
+    - libedit
 
