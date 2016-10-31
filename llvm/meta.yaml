@@ -21,9 +21,16 @@ source:
 requirements:
     build:
     - cmake >=3.6
+    - gcc >=4.7 [linux]
+    - libedit
+    - libffi [linux]
     - setuptools
     - python x.x
 
+    run:
+    - libedit
+    - libgcc >=4.7 [linux]
+    - libffi [linux]
 #test:
 #   imports:
 #   # - (e.g. a_python_module)
