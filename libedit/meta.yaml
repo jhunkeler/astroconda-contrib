@@ -1,0 +1,35 @@
+{% set name = 'libedit' %}
+{% set version = '3.1' %}
+{% set date = '20150325' %}
+{% set number = '0' %}
+
+about:
+    home: http://thrysoee.dk/editline
+    license: BSD
+    summary: |
+        Command line editor library provides generic line editing, history, and
+        tokenization functions
+
+package:
+    name: {{ name }}
+    version: {{date}}_{{version}}
+
+build:
+    number: {{ number }}
+
+source:
+    fn: {{ name }}-{{ version }}.tar.gz
+    url: http://thrysoee.dk/editline/{{name}}-{{date}}-{{version}}.tar.gz
+
+requirements:
+    build:
+    - ncurses
+    run:
+    - ncurses
+
+#test:
+#   imports:
+#   # - (e.g. a_python_module)
+#
+#   commands:
+#   # - (e.g. program --help)
