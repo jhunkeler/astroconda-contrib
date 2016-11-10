@@ -24,7 +24,7 @@ mkdir -p build
 pushd ./build
 ../configure --prefix=$PREFIX \
     --with-netlib-lapack-tarfile=../${LAPACK_TARBALL} \
-    "${OPTIONS}"
+    ${OPTIONS}
 
 make LIBTOOL=$LIBTOOL CC=$CC F77=$F77
 make install
