@@ -1,18 +1,24 @@
+{% set name = 'fftw' %}
+{% set version = '3.3.5' %}
+{% set number = '0' %}
+
 about:
     home: http://www.fftw.org
     license: GPL
-    summary: fftw
+    summary: |
+        FFTW is a C subroutine library for computing the discrete
+        Fourier transform (DFT) in one or more dimensions, of arbitrary input
+        size, and of both real and complex data.
 build:
-    number: '0'
+    number: {{number}}
 package:
-    name: fftw
-    version: 3.3.4
+    name: {{name}}
+    version: {{version}}
 requirements:
     build:
     - pkgconfig
     run:
     - pkgconfig
 source:
-    fn: fftw-3.3.4.tar.gz
-    url:
-    - http://www.fftw.org/fftw-3.3.4.tar.gz
+    fn: {{name}}-{{version}}.tar.gz
+    url: http://www.fftw.org/{{name}}-{{version}}.tar.gz
