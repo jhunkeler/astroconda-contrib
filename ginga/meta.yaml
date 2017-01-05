@@ -1,7 +1,7 @@
 {% set name = 'ginga' %}
 {% set version = '2.6.1' %}
 {% set tag = 'v' + version %}
-{% set number = '0' %}
+{% set number = '1' %}
 
 about:
     home: https://github.com/ejeschke/{{ name }}
@@ -25,7 +25,7 @@ requirements:
     run:
     - astropy >=1.2
     - qtpy
-    - numpy x.x
+    - numpy
     - python x.x
 
 source:
