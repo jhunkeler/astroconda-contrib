@@ -1,6 +1,6 @@
-{% name = 'stsci-hst' %}
-{% version = '2.0.0' %}
-{% number = '0' %}
+{% set name = 'stsci-hst' %}
+{% set version = '2.0.0' %}
+{% set number = '0' %}
 
 about:
     home: http://ssb.stsci.edu
