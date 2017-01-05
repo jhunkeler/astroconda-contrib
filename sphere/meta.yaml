@@ -1,6 +1,6 @@
 {% set name = 'sphere' %}
-{% set version = '1.0.7' %}
-{% set number = '1' %}
+{% set version = '1.0.10' %}
+{% set number = '0' %}
 
 about:
     home: https://github.com/spacetelescope/{{ name }}
