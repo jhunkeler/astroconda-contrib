@@ -3,16 +3,16 @@
 {% set number = '0' %}
 
 about:
-    home: https://pagure.io/python-daemon
+    home: https://pagure.io/{{ name }}
     license: Apache,GPL
     summary: Library to implement a well-behaved Unix daemon process.
 
 build:
-    number: {{number}}
+    number: {{ number }}
 
 package:
-    name: {{name}}
-    version: {{version}}
+    name: {{ name }}
+    version: {{ version }}
 
 requirements:
     build:
@@ -22,7 +22,8 @@ requirements:
     run:
     - lockfile
     - python x.x
+
 source:
-    fn: {{name}}-{{version}}.tar.gz
+    fn: {{ name }}-{{ version }}.tar.gz
     md5: 9c57343d81f2a96c51cffeab982b04d2
     url: https://pypi.python.org/packages/b2/fb/a280d65f81e9d69989c8d6c4e0bb18d7280cdcd6d406a2cc3f4eb47d4402/{{name}}-{{version}}.tar.gz
