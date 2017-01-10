@@ -4,18 +4,18 @@
 {% set number = '0' %}
 
 about:
-    home: http://hgomersall.github.com/{{badname}}
-    license: GPL
+    home: http://hgomersall.github.com/pyFFTW
+    license: BSD
     summary: |
         A pythonic wrapper around FFTW, the FFT library, presenting a unified
-        interface for all the supported transforms.
+        interface for all the supported transforms
 
 build:
-    number: {{number}}
+    number: {{ number }}
 
 package:
-    name: {{name}}
-    version: {{version}}
+    name: {{ name }}
+    version: {{ version }}
 
 requirements:
     build:
@@ -23,16 +23,16 @@ requirements:
     - cython
     - pkg-config [osx]
     - setuptools
-    - numpy x.x
+    - numpy
     - python x.x
     run:
     - cython
     - fftw
-    - numpy x.x
+    - numpy
     - python x.x
 
 source:
-    fn: {{badname}}-{{version}}.tar.gz
+    fn: {{ badname }}-{{ version }}.tar.gz
     url: https://pypi.python.org/packages/c2/2e/b25edc6960fc837e915eb1b38e5f0e3013e32e90aff14a1d0f4556b3d145/{{badname}}-{{version}}.tar.gz
     md5: 7fb59450308881bb48d9f178947d950e
 
