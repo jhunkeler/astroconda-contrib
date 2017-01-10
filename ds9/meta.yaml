@@ -2,23 +2,23 @@
 {% set version = '7.4.1' %}
 {% set number = '0' %}
 
-package:
-    name: {{name}}
-    version: {{version}}
+about:
+    home: http://ds9.si.edu/download/source/
+    license: GPL,LGPL,BSD
+    summary: |
+        SAOImage DS9 is an astronomical imaging and data visualization application
 
 build:
-    number: {{number}}
+    number: {{ number }}
+
+package:
+    name: {{ name }}
+    version: {{ version }}
 
 requirements:
     build:
     - gcc >=4.6 [osx]
 
 source:
-    fn: {{name}}.{{version}}.tar.gz
-    url: http://ds9.si.edu/download/source/{{name}}.{{version}}.tar.gz
-
-about:
-    home: http://ds9.si.edu
-    license: GPL,LGPL,BSD
-    summary: FITS file viewer
-
+    fn: {{ name }}.{{ version }}.tar.gz
+    url: http://ds9.si.edu/download/source/{{ name }}.{{ version }}.tar.gz
