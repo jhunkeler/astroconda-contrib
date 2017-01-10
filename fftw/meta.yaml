@@ -9,16 +9,20 @@ about:
         FFTW is a C subroutine library for computing the discrete
         Fourier transform (DFT) in one or more dimensions, of arbitrary input
         size, and of both real and complex data.
+
 build:
-    number: {{number}}
+    number: {{ number }}
+
 package:
-    name: {{name}}
-    version: {{version}}
+    name: {{ name }}
+    version: {{ version }}
+
 requirements:
     build:
     - pkgconfig
     run:
     - pkgconfig
+
 source:
-    fn: {{name}}-{{version}}.tar.gz
-    url: http://www.fftw.org/{{name}}-{{version}}.tar.gz
+    fn: {{ name }}-{{ version }}.tar.gz
+    url: http://www.fftw.org/{{ name }}-{{ version }}.tar.gz
