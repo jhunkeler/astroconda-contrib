@@ -13,27 +13,31 @@ source:
 
 build:
   number: {{ number }}
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  preserve_egg_dir: True
 
 requirements:
+    build:
+      - astropy
+      - glueviz >=0.10
+      - scikit-image
+      - qtpy
+      - python x.x
+      - setuptools
 
-  build:
-    - python
-    - setuptools
+    run:
+      - astropy
+      - numpy
+      - pyopengl
+      - glueviz >=0.10
+      - scikit-image
+      - matplotlib
+      - qtpy
+      - pyqt
+      - python x.x
 
-run:
-    - python
-    - numpy
-    - pyopengl
-    - glueviz >=0.10
-    - scikit-image
-    - matplotlib
-    - qtpy
-    - pyqt
-
-    # Temporary: the scikit-image conda package is missing the dask dependency
-    # so we add it here for now
-    - dask
+      # Temporary: the scikit-image conda package is missing the dask dependency
+      # so we add it here for now
+      - dask
 
 test:
   imports:
