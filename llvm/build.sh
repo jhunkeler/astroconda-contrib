@@ -3,8 +3,6 @@ top=`pwd`
 bld=build_$PKG_NAME
 mkdir -p $bld
 
-
-
 if [ -n "$MACOSX_DEPLOYMENT_TARGET" ]; then
     export MACOSX_DEPLOYMENT_TARGET=10.9
 fi
@@ -86,7 +84,7 @@ pushd $bld
 case "$OS" in
     Darwin)
         cmake \
-            -DCMAKE_INSTALL_PREFIX=${CONDA_PREFIX} \
+            -DCMAKE_INSTALL_PREFIX=${PREFIX} \
             -DCMAKE_LIBTOOL=${LIBTOOL} \
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_TARGETS_TO_BUILD="X86" \
@@ -100,20 +98,20 @@ case "$OS" in
             ../
     ;;
     Linux)
-        export PKG_CONFIG_PATH=$CONDA_PREFIX/lib/pkgconfig
-        export CFLAGS="-I$CONDA_PREFIX/include -I/usr/include"
+        export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
+        export CFLAGS="-I$PREFIX/include -I/usr/include"
         export CXXFLAGS="$CFLAGS"
-        export LDFLAGS="-L$CONDA_PREFIX/lib -L/usr/lib64"
+        export LDFLAGS="-L$PREFIX/lib -L/usr/lib64"
 
         cmake \
-            -DCMAKE_INSTALL_PREFIX=${CONDA_PREFIX} \
-            -DCMAKE_LIBTOOL=${LIBTOOL} \
+            -DCMAKE_INSTALL_PREFIX=${PREFIX} \
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_TARGETS_TO_BUILD="X86" \
             -DLLVM_ENABLE_FFI=yes \
+            -DCURSES_INCLUDE_PATH="${PREFIX}/include" \
+            -DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" \
             -DFFI_INCLUDE_DIR=`pkg-config libffi --variable=includedir` \
             -DFFI_LIBRARY_DIR=`pkg-config libffi --variable=libdir` \
-            -DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib -L${CONDA_PREFIX}/lib" \
             -DLLVM_ENABLE_LTO=full \
             -DLLVM_ENABLE_LIBCXX=yes \
             -DLLVM_ENABLE_EH=yes \
