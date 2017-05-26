@@ -122,7 +122,7 @@ case "$OS" in
     ;;
 esac
 
-    make -j${CPU_COUNT}
+make -j$(( CPU_COUNT - 1 ))
     make install
 popd
 
