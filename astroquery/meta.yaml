@@ -26,16 +26,18 @@ requirements:
     - keyring
     - beautifulsoup4
     - html5lib
+    - secretstorage
     - setuptools
-    - python x.x
-    
+    - python
+
     run:
     - astropy
     - requests
     - keyring
     - beautifulsoup4
     - html5lib
-    - python x.x
+    - secretstorage
+    - python
 
 test:
     imports:
