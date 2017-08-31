@@ -1,0 +1,28 @@
+{% set name = 'gcc7' %}
+{% set version = '7.2.0' %}
+{% set number = '0' %}
+{% set filename = 'gcc' + '-' + version + '.tar.gz' %}
+
+about:
+    home: http://gcc.gnu.org
+    license: GPL
+    summary: GNU Compiler Collection
+
+build:
+    number: {{ number }}
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+
+requirements:
+    build:
+    - mpc
+    - mpfr
+    - gmp
+    - isl
+    - cloog
+
+source:
+    fn: {{ name }}.{{ version }}.tar.gz
+    url: http://ftpmirror.gnu.org/gcc/gcc-7.2.0/{{ filename }}
