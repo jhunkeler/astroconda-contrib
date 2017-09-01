@@ -1,4 +1,4 @@
-{% set name = 'gcc7' %}
+{% set name = 'gcc' %}
 {% set version = '7.2.0' %}
 {% set number = '0' %}
 {% set filename = 'gcc' + '-' + version + '.tar.gz' %}
@@ -22,7 +22,20 @@ requirements:
     - gmp
     - isl
     - cloog
+    - zlib
 
 source:
-    fn: {{ name }}.{{ version }}.tar.gz
-    url: http://ftpmirror.gnu.org/gcc/gcc-7.2.0/{{ filename }}
+    fn: {{ filename }}
+    url: http://ftpmirror.gnu.org/gcc/{{ name }}-{{ version }}/{{ filename }}
+    md5: 2e4be17c604ea555e0dff4a8f81ffe44
+
+test:
+    commands:
+    - gcc --version
+    - gcc -v
+    - g++ --version
+    - g++ -v
+    - gfortran --version
+    - gfortran -v
+    - gccgo --version
+    - gccgo -v
