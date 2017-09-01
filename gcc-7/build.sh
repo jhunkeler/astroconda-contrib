@@ -1,6 +1,5 @@
 topdir=$(pwd)
 objdir=${topdir}/build
-export LDFLAGS="-L$PREFIX/lib $LDFLAGS"
 
 mkdir -p $PREFIX/lib
 ln -s $PREFIX/lib $PREFIX/lib64
@@ -18,7 +17,6 @@ ${topdir}/configure --prefix=$PREFIX \
     --with-mpfr=$PREFIX \
     --with-isl=$PREFIX \
     --with-cloog=$PREFIX \
-    --with-stage1-ldflags="$LDFLAGS" \
     --with-tune=generic \
     --with-linker-hash-style=gnu \
     --with-gcc-major-version-only \
