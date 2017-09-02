@@ -1,0 +1,27 @@
+package:
+  name: libgcc
+  version: 7.2.0
+
+requirements:
+  build:
+    - gcc 7.2.0
+
+build:
+  number: 0
+
+  always_include_files:
+    - lib/libgcc_s.so
+    - lib/libgcc_s.so.1
+    - lib/libatomic.so
+    - lib/libatomic.so.1
+    - lib/libatomic.so.1.2.0
+    - lib/libquadmath.so
+    - lib/libquadmath.so.0
+    - lib/libquadmath.so.0.0.0
+    - lib/libgfortran.so
+    - lib/libgfortran.so.4
+    - lib/libgfortran.so.4.0.0
+    - lib/libstdc++.so
+    - lib/libstdc++.so.6
+    - lib/libstdc++.so.6.0.24
+
