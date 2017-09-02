@@ -9,6 +9,7 @@ about:
     summary: GNU Compiler Collection
 
 build:
+    detect_binary_files_with_prefix: true # [not linux32]
     number: {{ number }}
 
 package:
@@ -33,9 +34,3 @@ test:
     commands:
     - gcc --version
     - gcc -v
-    - g++ --version
-    - g++ -v
-    - gfortran --version
-    - gfortran -v
-    - gccgo --version
-    - gccgo -v
