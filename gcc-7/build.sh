@@ -1,13 +1,18 @@
-mkdir -p $PREFIX/lib
-ln -s $PREFIX/lib $PREFIX/lib64
+srcdir=$(pwd)
 
 # Disable fixincludes
 sed -i.orig 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
-# Don't use lib64 convention
-sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+cd ..
+topdir=$(pwd)
 
-./configure \
+mkdir -p $PREFIX/lib
+ln -s $PREFIX/lib $PREFIX/lib64
+
+mkdir gcc-build
+pushd gcc-build
+
+${srcdir}/configure \
     --prefix=$PREFIX \
     --libdir=$PREFIX/lib \
     --datadir=$PREFIX/share \
@@ -18,7 +23,6 @@ sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
     --with-cloog=$PREFIX \
     --with-tune=generic \
     --disable-multilib \
-    --disable-bootstrap \
     --disable-libunwind-exceptions \
     --disable-werror \
     --enable-shared \
@@ -29,6 +33,7 @@ sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
 make -j${CPU_COUNT}
 make install-strip
+popd
 
 rm -f $PREFIX/lib64
 [ -e "$PREFIX/bin/cc" ] || ln -s "gcc" "$PREFIX/bin/cc"
