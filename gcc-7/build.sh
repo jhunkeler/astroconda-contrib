@@ -27,7 +27,7 @@ ln -s $PREFIX/lib $PREFIX/lib64
     --enable-languages=c,c++,fortran
 
 make -j${CPU_COUNT}
-make install-stripped
+make install-strip
 
 rm -f $PREFIX/lib64
 [ -e "$PREFIX/bin/cc" ] || ln -s "gcc" "$PREFIX/bin/cc"
