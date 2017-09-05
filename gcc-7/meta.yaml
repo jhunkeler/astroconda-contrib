@@ -18,20 +18,20 @@ package:
 
 requirements:
     build:
-      - mpc
-      - mpfr
-      - gmp
-      - isl
-      - cloog
-      - zlib
-      
+      - mpc >=1.0.3
+      - mpfr >=3.1.5
+      - gmp >=6.1.0
+      - isl >=0.15
+      - cloog 0.18.1
+      - zlib >=1.2.11
+
     run:
-      - mpc
-      - mpfr
-      - gmp
-      - isl
-      - cloog
-      - zlib
+      - mpc >=1.0.3
+      - mpfr >=3.1.5
+      - gmp >=6.1.0
+      - isl >=0.15
+      - cloog 0.18.1
+      - zlib >=1.2.11
 
 source:
     fn: {{ filename }}
