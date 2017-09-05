@@ -1,11 +1,11 @@
 mkdir -p $PREFIX/lib
 ln -s $PREFIX/lib $PREFIX/lib64
 
-#sed -i.orig -e 's|lib64|lib|g' gcc/config.gcc
-#sed -i.orig -e 's|\.\./lib64|../lib|' \
-#    -e 's|\.\./libx32|../lib|' \
-#    gcc/config/i386/t-linux64 \
-#    gcc/genmultilib
+# Disable fixincludes
+sed -i.orig 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+
+# Don't use lib64 convention
+sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
 ./configure \
     --prefix=$PREFIX \
@@ -20,6 +20,7 @@ ln -s $PREFIX/lib $PREFIX/lib64
     --disable-multilib \
     --disable-bootstrap \
     --disable-libunwind-exceptions \
+    --disable-werror \
     --enable-shared \
     --enable-checking=release \
     --enable-threads=posix \
