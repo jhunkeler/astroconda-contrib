@@ -1,16 +1,16 @@
 package:
   name: certifi
-  version: 2017.7.27.1
+  version: 2016.9.26
 
 source:
-  url: https://pypi.python.org/packages/20/d0/3f7a84b0c5b89e94abbd073a5f00c7176089f526edb056686751d5064cbd/certifi-2017.7.27.1.tar.gz
-  fn: certifi-2017.7.27.1.tar.gz
-  md5: 48e8370da8b370a16e223ee9c7b6b063
+  url: https://files.pythonhosted.org/packages/source/c/certifi/certifi-2016.9.26.tar.gz
+  fn: certifi-2016.9.26.tar.gz
+  md5: baa81e951a29958563689d868ef1064d
 
 requirements:
   build:
     - python
-    - setuptools
+    - setuptools <36.4.0
   run:
     - python
 

@@ -21,11 +21,11 @@ build:
 requirements:
   build:
     - python
-    - certifi >=2017.9.26
+    - certifi >=2016.9.26
     - wincertstore  [win]
   run:
     - python
-    - certifi >=2017.9.26
+    - certifi >=2016.9.26
     - wincertstore  [win]
 
 test:
