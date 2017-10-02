@@ -1,0 +1,35 @@
+{% set name = 'vim' %}
+{% set version = '8.0.1171' %}
+{% set tag = 'v' + version %}
+{% set number = '0' %}
+
+about:
+  home: https://github.com/vim/{{ name }}
+  license: charityware
+  summary: 'VI[mproved] editor'
+
+build:
+  number: {{ number }}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+requirements:
+  build:
+    - libiconv
+    - ncurses
+    - readline
+
+  run:
+    - libiconv
+    - ncurses
+    - readline
+
+source:
+  git_tag: {{ tag }}
+  git_url: https://github.com/vim/{{ name }}
+
+test:
+  commands:
+    - vim --version
