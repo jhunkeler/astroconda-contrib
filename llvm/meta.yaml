@@ -1,5 +1,5 @@
 {% set name = 'llvm' %}
-{% set version = '3.9.0' %}
+{% set version = '5.0.0' %}
 {% set number = '0' %}
 
 about:
@@ -22,6 +22,7 @@ source:
 requirements:
     build:
     - cmake >=3.6
+    - gcc ==7.2.0
     - libedit
     - libffi [linux]
     - libxml2

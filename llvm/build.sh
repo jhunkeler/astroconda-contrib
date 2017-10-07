@@ -107,21 +107,22 @@ case "$OS" in
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-L$PREFIX/lib -L/usr/lib64"
 
-            #-DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" \
         cmake \
             -DCMAKE_INSTALL_PREFIX=${PREFIX} \
             -DCMAKE_BUILD_TYPE=Release \
-            -DLLVM_TARGETS_TO_BUILD="X86" \
-            -DLLVM_ENABLE_FFI=yes \
+            -DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" \
             -DCURSES_INCLUDE_PATH="${PREFIX}/include" \
             -DFFI_INCLUDE_DIR=`pkg-config libffi --variable=includedir` \
             -DFFI_LIBRARY_DIR=`pkg-config libffi --variable=libdir` \
+            -DLLVM_TARGETS_TO_BUILD="X86" \
+            -DLLVM_ENABLE_FFI=yes \
             -DLLVM_ENABLE_LTO=full \
             -DLLVM_ENABLE_LIBCXX=yes \
             -DLLVM_ENABLE_EH=yes \
             -DLLVM_ENABLE_RTTI=yes \
             -DLLVM_OPTIMIZED_TABLEGEN=yes \
             -DLLDB_DISABLE_PYTHON=1 \
+            -DLIBOMPTARGET_SYSTEM_TARGETS="x86_64-pc-linux-gnu" \
             ../
     ;;
 esac
