@@ -1,0 +1,26 @@
+{% set name = 'cmake' %}
+{% set version = '3.9.4' %}
+{% set tag = 'v' + version %}
+{% set number = '0' %}
+{% set filename = name + '-' + version + '.tar.gz' %}
+
+about:
+    home: http://cmake.org
+    license: BSD
+    summary: 'CMake is a cross-platform, open-source build system generator'
+
+build:
+    number: {{ number }}
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+
+#requirements:
+#    build:
+#    run:
+
+source:
+    fn: {{ filename }}
+    url: https://cmake.org/files/v3.9/{{ filename }}
+    md5: 33769e001bdcd788f565bf378692e5ae
