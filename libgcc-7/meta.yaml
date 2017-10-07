@@ -10,18 +10,89 @@ build:
   number: 0
 
   always_include_files:
-    - lib/libgcc_s.so
-    - lib/libgcc_s.so.1
+    - lib/libasan.a
+    - lib/libasan.la
+    - lib/libasan.so
+    - lib/libasan.so.4
+    - lib/libasan.so.4.0.0
+    - lib/libasan_preinit.o
+    - lib/libatomic.a
+    - lib/libatomic.la
     - lib/libatomic.so
     - lib/libatomic.so.1
     - lib/libatomic.so.1.2.0
-    - lib/libquadmath.so
-    - lib/libquadmath.so.0
-    - lib/libquadmath.so.0.0.0
+    - lib/libcc1.la
+    - lib/libcc1.so
+    - lib/libcc1.so.0
+    - lib/libcc1.so.0.0.0
+    - lib/libcilkrts.a
+    - lib/libcilkrts.la
+    - lib/libcilkrts.so
+    - lib/libcilkrts.so.5
+    - lib/libcilkrts.so.5.0.0
+    - lib/libcilkrts.spec
+    - lib/libgcc_s.so
+    - lib/libgcc_s.so.1
+    - lib/libgfortran.a
+    - lib/libgfortran.la
     - lib/libgfortran.so
     - lib/libgfortran.so.4
     - lib/libgfortran.so.4.0.0
+    - lib/libgfortran.spec
+    - lib/libgomp.a
+    - lib/libgomp.la
+    - lib/libgomp.so
+    - lib/libgomp.so.1
+    - lib/libgomp.so.1.0.0
+    - lib/libgomp.spec
+    - lib/libitm.a
+    - lib/libitm.la
+    - lib/libitm.so
+    - lib/libitm.so.1
+    - lib/libitm.so.1.0.0
+    - lib/libitm.spec
+    - lib/liblsan.a
+    - lib/liblsan.la
+    - lib/liblsan.so
+    - lib/liblsan.so.0
+    - lib/liblsan.so.0.0.0
+    - lib/libmpx.a
+    - lib/libmpx.la
+    - lib/libmpx.so
+    - lib/libmpx.so.2
+    - lib/libmpx.so.2.0.1
+    - lib/libmpx.spec
+    - lib/libquadmath.a
+    - lib/libquadmath.la
+    - lib/libquadmath.so
+    - lib/libquadmath.so.0
+    - lib/libquadmath.so.0.0.0
+    - lib/libsanitizer.spec
+    - lib/libssp.a
+    - lib/libssp.la
+    - lib/libssp.so
+    - lib/libssp.so.0
+    - lib/libssp.so.0.0.0
+    - lib/libssp_nonshared.a
+    - lib/libssp_nonshared.la
+    - lib/libstdc++.a
+    - lib/libstdc++.la
     - lib/libstdc++.so
     - lib/libstdc++.so.6
     - lib/libstdc++.so.6.0.24
-
+    - lib/libstdc++.so.6.0.24-gdb.py
+    - lib/libstdc++fs.a
+    - lib/libstdc++fs.la
+    - lib/libsupc++.a
+    - lib/libsupc++.la
+    - lib/libtsan.a
+    - lib/libtsan.la
+    - lib/libtsan.so
+    - lib/libtsan.so.0
+    - lib/libtsan.so.0.0.0
+    - lib/libtsan_preinit.o
+    - lib/libubsan.a
+    - lib/libubsan.la
+    - lib/libubsan.so
+    - lib/libubsan.so.0
+    - lib/libubsan.so.0.0.0
