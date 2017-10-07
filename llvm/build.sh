@@ -3,11 +3,12 @@ top=`pwd`
 bld=build_$PKG_NAME
 mkdir -p $bld
 
-if [ -n "$MACOSX_DEPLOYMENT_TARGET" ]; then
-    export MACOSX_DEPLOYMENT_TARGET=10.9
+if [[ $OS == Darwin ]]; then
+    export LIBTOOL=/usr/bin/libtool
+    if [ -n "$MACOSX_DEPLOYMENT_TARGET" ]; then
+        export MACOSX_DEPLOYMENT_TARGET=10.9
+    fi
 fi
-
-export LIBTOOL=/usr/bin/libtool
 
 #get sources
 fetch=curl
@@ -25,6 +26,7 @@ release_url=http://llvm.org/releases/${PKG_VERSION}
 packages=(
     cfe
     clang-tools-extra
+    compiler-rt
     libcxx
     libcxxabi
     libunwind
@@ -33,7 +35,6 @@ packages=(
     openmp
     polly
 )
-
 
 for p in "${packages[@]}"
 do
@@ -56,6 +57,9 @@ do
         ;;
         lldb)
             mv $pkg_unpacked $top/tools/lldb
+        ;;
+        compiler-rt)
+            mv $pkg_unpacked $top/projects/compiler-rt
         ;;
         libcxx)
             mv $pkg_unpacked $top/projects/libcxx
@@ -103,13 +107,13 @@ case "$OS" in
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-L$PREFIX/lib -L/usr/lib64"
 
+            #-DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" \
         cmake \
             -DCMAKE_INSTALL_PREFIX=${PREFIX} \
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_TARGETS_TO_BUILD="X86" \
             -DLLVM_ENABLE_FFI=yes \
             -DCURSES_INCLUDE_PATH="${PREFIX}/include" \
-            -DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" \
             -DFFI_INCLUDE_DIR=`pkg-config libffi --variable=includedir` \
             -DFFI_LIBRARY_DIR=`pkg-config libffi --variable=libdir` \
             -DLLVM_ENABLE_LTO=full \
@@ -123,6 +127,6 @@ case "$OS" in
 esac
 
 make -j$(( CPU_COUNT - 1 ))
-    make install
+make install
 popd
 

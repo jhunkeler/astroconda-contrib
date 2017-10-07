@@ -5,7 +5,7 @@
 about:
     home: http://llvm.org
     license: BSD
-    summary: LLVM core package
+    summary: LLVM development stack
 
 package:
     name: {{ name }}
@@ -17,26 +17,24 @@ build:
 source:
     fn: {{ name }}-{{ version }}.src.tar.gz
     url: http://llvm.org/releases/{{version}}/llvm-{{version}}.src.tar.xz
+    md5: 5ce9c5ad55243347ea0fdb4c16754be0
 
 requirements:
     build:
     - cmake >=3.6
-    - gcc >=4.7 [linux]
     - libedit
     - libffi [linux]
     - libxml2
     - ncurses
     - setuptools
-    - python x.x
+    - python
 
     run:
     - libedit
     - ncurses
-    - libgcc >=4.7 [linux]
     - libffi [linux]
-#test:
-#   imports:
-#   # - (e.g. a_python_module)
-#
-#   commands:
-#   # - (e.g. program --help)
+
+test:
+   commands:
+     - clang --version
+     - clang++ --version
