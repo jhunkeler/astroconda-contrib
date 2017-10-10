@@ -15,14 +15,17 @@ build:
     number: {{ number }}
 
 source:
-    fn: {{ name }}-{{ version }}.src.tar.gz
-    url: http://llvm.org/releases/{{version}}/llvm-{{version}}.src.tar.xz
-    md5: 5ce9c5ad55243347ea0fdb4c16754be0
+    #fn: {{ name }}-{{ version }}.src.tar.gz
+    #url: http://llvm.org/releases/{{version}}/llvm-{{version}}.src.tar.xz
+    #md5: 5ce9c5ad55243347ea0fdb4c16754be0
+    git_branch: release_50
+    git_url: https://github.com/llvm-mirror/{{ name }}
 
 requirements:
     build:
+    - git
     - cmake >=3.6
-    - gcc ==7.2.0
+    - gcc ==4.8.5
     - libedit
     - libffi [linux]
     - libxml2
@@ -31,6 +34,7 @@ requirements:
     - python
 
     run:
+    - libgcc ==4.8.5
     - libedit
     - ncurses
     - libffi [linux]
