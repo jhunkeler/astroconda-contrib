@@ -26,7 +26,7 @@ requirements:
     - pytest
     - setuptools
     - numpy
-    - python x.x
+    - python
     run:
     - astropy >=1.3
     - cython
@@ -37,7 +37,7 @@ requirements:
     - matplotlib
     - scipy
     - numpy
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}

@@ -26,13 +26,13 @@ requirements:
     - six
     - setuptools
     - numpy
-    - python x.x
+    - python
     run:
     - astropy
     - ds9
     - six
     - numpy
-    - python x.x
+    - python
 
 source:
     git_rev: 3761d7ac151f8c8729d0fb6cdba017cadf278283

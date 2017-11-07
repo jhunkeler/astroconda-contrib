@@ -22,13 +22,13 @@ requirements:
     - stsci.distutils
     - stsci.tools
     - numpy
-    - python x.x
+    - python
     run:
     - astropy >=1.1
     - stsci.tools
     - wxpython [py27]
     - numpy
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}

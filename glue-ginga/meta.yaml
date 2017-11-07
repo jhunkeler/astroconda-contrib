@@ -23,13 +23,13 @@ requirements:
     - ginga >=2.6.1
     - setuptools
     - numpy
-    - python x.x
+    - python
     run:
     - astropy >=1.2
     - glueviz >=0.10
     - ginga >=2.6.1
     - numpy
-    - python x.x
+    - python
 
 source:
     git_tag: {{ tag }}

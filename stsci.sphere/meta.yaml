@@ -22,12 +22,12 @@ requirements:
     - numpy
     - setuptools
     - stsci.distutils
-    - python x.x
+    - python
     run:
     - astropy >=1.1
     - matplotlib
     - numpy
-    - python x.x
+    - python
 
 source:
     git_url: https://bitbucket.org/stsci_ssb/{{ name }}.git

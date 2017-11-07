@@ -19,14 +19,14 @@ requirements:
     - astropy >=1.1
     - numpy
     - setuptools
-    - python x.x
+    - python
     - matplotlib
     - scipy
     - stsci.tools
     run:
     - astropy >=1.1
     - numpy
-    - python x.x
+    - python
     - stsci.tools
     - matplotlib
     - scipy

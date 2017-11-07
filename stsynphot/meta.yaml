@@ -23,7 +23,7 @@ requirements:
     - numpy
     - pytest
     - setuptools
-    - python x.x
+    - python
 
     run:
     - synphot >=0.1*
@@ -31,7 +31,7 @@ requirements:
     - scipy >=0.14
     - numpy
     - pytest
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}

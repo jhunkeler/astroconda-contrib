@@ -27,10 +27,10 @@ requirements:
     build:
     # Dependencies required at BUILD-TIME go here
     - setuptools
-    - python x.x
+    - python
     run:
     # Dependencies required at RUN-TIME go here
-    - python x.x
+    - python
 
 #test:
 #   imports:

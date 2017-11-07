@@ -23,12 +23,12 @@ requirements:
     - astropy >=1.1
     - setuptools
     - numpy
-    - python x.x
+    - python
 
     run:
     - astropy >=1.1
     - numpy
-    - python x.x
+    - python
 
 test:
     imports:

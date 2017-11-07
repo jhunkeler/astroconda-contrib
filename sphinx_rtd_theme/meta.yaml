@@ -19,10 +19,10 @@ requirements:
     build:
     - sphinx
     - setuptools
-    - python x.x
+    - python
     run:
     - sphinx
-    - python x.x
+    - python
 
 source:
     fn: {{ name }}-{{ version }}.tar.gz

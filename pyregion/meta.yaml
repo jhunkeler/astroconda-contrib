@@ -19,13 +19,13 @@ requirements:
     - d2to1
     - numpy
     - pyparsing
-    - python x.x
+    - python
     - setuptools
     run:
     - numpy
     - pyparsing
     - setuptools
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}
