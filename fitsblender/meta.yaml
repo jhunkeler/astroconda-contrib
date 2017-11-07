@@ -22,12 +22,12 @@ requirements:
     - stsci.tools
     - setuptools
     - numpy
-    - python x.x
+    - python
     run:
     - astropy >=1.1
     - stsci.tools
     - numpy
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}

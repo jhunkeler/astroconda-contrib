@@ -16,13 +16,13 @@ requirements:
     - astropy >=1.1
     - numpy
     - pytest
-    - python x.x
+    - python
     - setuptools
     run:
     - astropy >=1.1
     - numpy
     - pytest
-    - python x.x
+    - python
 source:
     git_tag: {{ version }}
     git_url: https://github.com/spacetelescope/{{ name }}.git

@@ -25,14 +25,14 @@ requirements:
     - stwcs
     - setuptools
     - numpy
-    - python x.x
+    - python
     run:
     - astropy >=1.1
     - stsci.imagestats
     - stsci.sphere
     - stsci.tools
     - stwcs
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}

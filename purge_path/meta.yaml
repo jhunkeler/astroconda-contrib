@@ -16,10 +16,10 @@ package:
 
 requirements:
     build:
-    - python x.x
+    - python
     - setuptools
     run:
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}

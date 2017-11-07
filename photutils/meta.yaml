@@ -26,7 +26,7 @@ requirements:
     - scipy >=0.16
     - six
     - setuptools
-    - python x.x
+    - python
     run:
     - astropy >=2.0
     - cython
@@ -37,7 +37,7 @@ requirements:
     - scipy >=0.16
     - six
     - setuptools
-    - python x.x
+    - python
 
 source:
     git_tag: {{ tag }}

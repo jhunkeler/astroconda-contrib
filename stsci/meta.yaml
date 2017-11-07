@@ -28,7 +28,7 @@ requirements:
     - pyds9 >=1.8.1
     - pyfftw >=0.9.2
     - numpy
-    - python x.x
+    - python
     run:
     - stsci-hst >=3.0.0
     - stsci-data-analysis >=2.0.2
@@ -42,4 +42,4 @@ requirements:
     - pyds9 >=1.8.1
     - pyfftw >=0.9.2
     - numpy
-    - python x.x
+    - python

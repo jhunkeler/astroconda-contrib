@@ -18,12 +18,12 @@ requirements:
     build:
     - astropy >=1.1
     - numpy
-    - python x.x
+    - python
     - setuptools
     run:
     - astropy >=1.1
     - numpy
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}

@@ -18,11 +18,11 @@ requirements:
   build:
     - sphinx >=1.1
     - setuptools
-    - python x.x
+    - python
 
   run:
     - sphinx >=1.1
-    - python x.x
+    - python
 
 test:
   requires:

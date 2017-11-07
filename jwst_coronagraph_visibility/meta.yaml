@@ -26,14 +26,14 @@ source:
 requirements:
     build:
     - setuptools
-    - python x.x
+    - python
     - numpy
     - matplotlib
     - tk
     - requests
     - jwxml >=0.3.0
     run:
-    - python x.x
+    - python
     - numpy
     - matplotlib
     - requests

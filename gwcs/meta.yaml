@@ -20,12 +20,12 @@ requirements:
     - astropy >=2.0
     - setuptools
     - numpy
-    - python x.x
+    - python
     run:
     - asdf
     - astropy >=2.0
     - numpy
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}

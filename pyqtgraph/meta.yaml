@@ -20,12 +20,12 @@ requirements:
      build:
      - setuptools
      - numpy
-     - python x.x
+     - python
      run:
      - pyqt
      - pyopengl
      - numpy
-     - python x.x
+     - python
 
 source:
      git_tag: {{ tag }}

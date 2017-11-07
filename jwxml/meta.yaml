@@ -19,11 +19,11 @@ requirements:
     build:
     - numpy
     - matplotlib
-    - python x.x
+    - python
     run:
     - numpy
     - matplotlib
-    - python x.x
+    - python
 
 source:
     git_tag: {{ version }}

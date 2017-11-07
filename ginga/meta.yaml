@@ -22,13 +22,13 @@ requirements:
     - pillow
     - setuptools
     - numpy
-    - python x.x
+    - python
     run:
     - astropy >=1.2
     - qtpy
     - pillow
     - numpy
-    - python x.x
+    - python
 
 source:
     git_tag: {{ tag }}
