@@ -22,7 +22,7 @@ requirements:
     - numpy
     - scipy
     - setuptools
-    - python
+    - python {{ python }}
     run:
     - ginga >=2.6.2
     - astropy >=1.2

@@ -27,7 +27,7 @@ requirements:
     build:
     # Dependencies required at BUILD-TIME go here
     - setuptools
-    - python
+    - python {{ python }}
     run:
     # Dependencies required at RUN-TIME go here
     - python

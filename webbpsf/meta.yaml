@@ -27,7 +27,7 @@ requirements:
     - six [py27]
     - webbpsf-data ==0.6.0
     - setuptools
-    - python
+    - python {{ python }}
     - ipywidgets
     - jwxml
     run:

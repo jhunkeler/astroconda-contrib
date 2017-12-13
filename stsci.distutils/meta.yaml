@@ -20,7 +20,7 @@ requirements:
     - d2to1
     - setuptools
     - numpy
-    - python
+    - python {{ python }}
     run:
     - nose
     - numpy

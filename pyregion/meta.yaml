@@ -19,7 +19,7 @@ requirements:
     - d2to1
     - numpy
     - pyparsing
-    - python
+    - python {{ python }}
     - setuptools
     run:
     - numpy

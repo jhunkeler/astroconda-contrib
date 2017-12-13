@@ -19,7 +19,7 @@ requirements:
     - astropy >=1.1
     - numpy
     - setuptools
-    - python
+    - python {{ python }}
     - matplotlib
     - scipy
     - stsci.tools

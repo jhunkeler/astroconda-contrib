@@ -23,7 +23,7 @@ requirements:
     - ginga >=2.6.1
     - setuptools
     - numpy
-    - python
+    - python {{ python }}
     run:
     - astropy >=1.2
     - glueviz >=0.10

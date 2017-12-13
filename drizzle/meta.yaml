@@ -23,7 +23,7 @@ requirements:
     - astropy >=1.1
     - setuptools
     - numpy
-    - python
+    - python {{ python }}
 
     run:
     - astropy >=1.1

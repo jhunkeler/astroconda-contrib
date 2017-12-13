@@ -17,7 +17,7 @@ requirements:
     build:
     - pbr
     - setuptools
-    - python
+    - python {{ python }}
     run:
     - pbr
     - python

@@ -17,7 +17,7 @@ package:
 
 requirements:
     build:
-    - python
+    - python {{ python }}
     - setuptools
     - psutil
     - python-daemon

@@ -22,7 +22,7 @@ requirements:
     - pillow
     - setuptools
     - numpy
-    - python
+    - python {{ python }}
     run:
     - astropy >=1.2
     - qtpy

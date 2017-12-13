@@ -20,7 +20,7 @@ requirements:
     build:
     - sphinx
     - setuptools
-    - python
+    - python {{ python }}
     run:
     - sphinx
     - python
