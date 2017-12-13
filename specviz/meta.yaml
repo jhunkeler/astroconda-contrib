@@ -30,7 +30,7 @@ requirements:
     - setuptools
     - six
     - numpy
-    - python
+    - python {{ python }}
 
   run:
     - astropy

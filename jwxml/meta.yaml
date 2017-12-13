@@ -19,7 +19,7 @@ requirements:
     build:
     - numpy
     - matplotlib
-    - python
+    - python {{ python }}
     run:
     - numpy
     - matplotlib

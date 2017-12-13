@@ -22,7 +22,7 @@ requirements:
     - numpy
     - setuptools
     - stsci.distutils
-    - python
+    - python {{ python }}
     run:
     - astropy >=1.1
     - matplotlib

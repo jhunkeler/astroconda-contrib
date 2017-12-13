@@ -22,7 +22,7 @@ requirements:
     - numpy
     - stsci.tools
     - setuptools
-    - python
+    - python {{ python }}
     run:
     - numpy
     - stsci.tools

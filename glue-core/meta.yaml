@@ -23,7 +23,7 @@ build:
 requirements:
 
   build:
-    - python
+    - python {{ python }}
     - setuptools
     - pyqt
 

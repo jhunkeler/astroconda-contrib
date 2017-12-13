@@ -28,7 +28,7 @@ requirements:
     - scipy
     - tk
     - setuptools
-    - python
+    - python {{ python }}
 
     run:
     - astropy >=1.3

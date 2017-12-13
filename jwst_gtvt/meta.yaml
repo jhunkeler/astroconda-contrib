@@ -22,7 +22,7 @@ requirements:
     - matplotlib
     - numpy
     - setuptools
-    - python
+    - python {{ python }}
 
     run:
     - astropy

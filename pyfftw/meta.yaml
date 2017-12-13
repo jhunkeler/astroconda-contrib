@@ -23,7 +23,7 @@ requirements:
     - pkg-config [osx]
     - setuptools
     - numpy
-    - python
+    - python {{ python }}
     run:
     - cython
     - fftw

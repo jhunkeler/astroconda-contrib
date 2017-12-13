@@ -18,7 +18,7 @@ requirements:
     build:
     - astropy >=1.1
     - numpy
-    - python
+    - python {{ python }}
     - setuptools
     run:
     - astropy >=1.1

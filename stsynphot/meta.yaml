@@ -23,7 +23,7 @@ requirements:
     - numpy
     - pytest
     - setuptools
-    - python
+    - python {{ python }}
 
     run:
     - synphot >=0.1*

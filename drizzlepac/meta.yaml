@@ -33,7 +33,7 @@ requirements:
     - stsci.tools
     - stwcs
     - pyregion
-    - python
+    - python {{ python }}
     - setuptools
     run:
     - astropy >=1.1
