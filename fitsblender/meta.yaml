@@ -21,7 +21,7 @@ requirements:
     - stsci.distutils
     - stsci.tools
     - setuptools
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
     run:
     - astropy >=1.1

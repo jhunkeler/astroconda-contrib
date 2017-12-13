@@ -46,7 +46,7 @@ requirements:
     - stwcs >=1.3.2
     - wfpc2tools >=1.0.3
     - wfc3tools >=1.3.4
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
     run:
     - purge_path >=1.0.0

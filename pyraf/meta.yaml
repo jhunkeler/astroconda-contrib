@@ -26,7 +26,7 @@ requirements:
     - pyobjc-framework-quartz >=3.0.4 [osx]
     - stsci.tools
     - setuptools
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
     run:
     - astropy >=1.1

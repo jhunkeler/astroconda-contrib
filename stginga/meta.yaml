@@ -19,7 +19,7 @@ requirements:
     build:
     - ginga >=2.6.2
     - astropy >=1.2
-    - numpy
+    - numpy {{ numpy }}
     - scipy
     - setuptools
     - python {{ python }}

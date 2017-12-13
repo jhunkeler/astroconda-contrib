@@ -27,7 +27,7 @@ requirements:
     build:
     - setuptools
     - python {{ python }}
-    - numpy
+    - numpy {{ numpy }}
     - matplotlib
     - tk
     - requests

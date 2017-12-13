@@ -14,7 +14,7 @@ package:
 requirements:
     build:
     - astropy >=1.1
-    - numpy
+    - numpy {{ numpy }}
     - pytest
     - python {{ python }}
     - setuptools

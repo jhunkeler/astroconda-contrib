@@ -25,7 +25,7 @@ requirements:
     - cython
     - pytest
     - setuptools
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
     run:
     - astropy >=1.3

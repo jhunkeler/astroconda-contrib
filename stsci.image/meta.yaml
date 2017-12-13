@@ -20,7 +20,7 @@ requirements:
     build:
     - d2to1
     - astropy >=1.1
-    - numpy
+    - numpy {{ numpy }}
     - scipy
     - stsci.distutils
     - stsci.tools

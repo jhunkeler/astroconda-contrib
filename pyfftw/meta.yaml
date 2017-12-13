@@ -22,7 +22,7 @@ requirements:
     - cython
     - pkg-config [osx]
     - setuptools
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
     run:
     - cython
