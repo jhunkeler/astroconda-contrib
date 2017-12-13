@@ -19,7 +19,7 @@ requirements:
     - asdf
     - astropy >=2.0
     - setuptools
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
     run:
     - asdf

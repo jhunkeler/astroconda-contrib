@@ -20,7 +20,7 @@ requirements:
   build:
     - python {{ python }}
     - setuptools
-    - numpy
+    - numpy {{ numpy }}
     - pyopengl
     - glue-core >=0.12
 

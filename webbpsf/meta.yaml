@@ -20,7 +20,7 @@ package:
 requirements:
     build:
     - astropy >=1.1
-    - numpy
+    - numpy {{ numpy }}
     - scipy
     - matplotlib
     - poppy >=0.6.1

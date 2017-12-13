@@ -20,7 +20,7 @@ requirements:
     - astropy >=1.1
     - matplotlib
     - setuptools
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
     run:
     - astropy >=1.1

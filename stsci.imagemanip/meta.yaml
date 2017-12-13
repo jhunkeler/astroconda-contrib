@@ -18,7 +18,7 @@ package:
 requirements:
     build:
     - d2to1
-    - numpy
+    - numpy {{ numpy }}
     - stsci.distutils
     - stsci.tools
     - setuptools

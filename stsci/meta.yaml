@@ -27,7 +27,7 @@ requirements:
     - purge_path >=1.0.0
     - pyds9 >=1.8.1
     - pyfftw >=0.9.2
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
     run:
     - stsci-hst >=3.0.0

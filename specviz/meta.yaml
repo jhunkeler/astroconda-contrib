@@ -29,7 +29,7 @@ requirements:
     - yaml
     - setuptools
     - six
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
 
   run:

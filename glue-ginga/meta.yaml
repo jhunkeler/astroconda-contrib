@@ -22,7 +22,7 @@ requirements:
     - glue-vispy-viewers >=0.8
     - ginga >=2.6.1
     - setuptools
-    - numpy
+    - numpy {{ numpy }}
     - python {{ python }}
     run:
     - astropy >=1.2

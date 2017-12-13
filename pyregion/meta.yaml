@@ -17,7 +17,7 @@ package:
 requirements:
     build:
     - d2to1
-    - numpy
+    - numpy {{ numpy }}
     - pyparsing
     - python {{ python }}
     - setuptools
