@@ -1,6 +1,6 @@
 
 function get_py_version() {
-python --version 2>&1| awk '{sub(/-.*/,"",$2);print $2}'
+$PYTHON --version 2>&1| awk '{sub(/-.*/,"",$2);print $2}'
 }
 export -f get_py_version
 
@@ -24,4 +24,4 @@ pip install --no-deps --upgrade --force d2to1
 if [ $PY3K -ne 0 ] ; then
 sed -i -e "s|stsci.distutils.hooks.tag_svn_revision|#removed|" setup.cfg
 fi
-python setup.py install || exit 1
+$PYTHON setup.py install
