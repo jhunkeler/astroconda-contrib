@@ -1,5 +1,8 @@
 {% set name = 'pyqtgraph' %}
 {% set version = '0.10.0' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set tag = name + '-' + version %}
 {% set number = '0' %}
 

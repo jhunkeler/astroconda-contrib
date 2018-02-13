@@ -1,5 +1,8 @@
 {% set name = 'wcstools' %}
 {% set version = '3.9.5' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 about:
     home: http://tdc-www.harvard.edu/wcstools

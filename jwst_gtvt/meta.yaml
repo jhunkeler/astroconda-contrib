@@ -1,5 +1,8 @@
 {% set name = 'jwst_gtvt' %}
 {% set version = '0.1.0' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 about:

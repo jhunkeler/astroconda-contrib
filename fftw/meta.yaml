@@ -1,5 +1,8 @@
 {% set name = 'fftw' %}
 {% set version = '3.3.4' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 about:

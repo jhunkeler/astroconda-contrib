@@ -1,5 +1,8 @@
 {% set name = 'asdf-standard' %}
 {% set version = '1.0.0' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set tag = 'v' + version %}
 {% set number = '0' %}
 

@@ -1,5 +1,8 @@
 {% set name = 'glue-vispy-viewers' %}
-{% set version = "0.9" %}
+{% set version = '0.9' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 package:

@@ -1,5 +1,8 @@
 {% set name = 'pyraf' %}
 {% set version = '2.1.11' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '1' %}
 
 about:

@@ -1,5 +1,8 @@
 {% set name = 'webbpsf-data' %}
 {% set version = '0.6.0' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 about:

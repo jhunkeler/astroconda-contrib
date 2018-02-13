@@ -1,6 +1,9 @@
 {% set name = 'cfitsio' %}
 {% set version = '3.370' %}
 {% set version_short = '3370' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '1' %}
 
 about:

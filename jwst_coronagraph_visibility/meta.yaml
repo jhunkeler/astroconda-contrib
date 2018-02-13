@@ -1,5 +1,8 @@
 {% set name = 'jwst_coronagraph_visibility' %}
 {% set version = '0.3.0' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 about:

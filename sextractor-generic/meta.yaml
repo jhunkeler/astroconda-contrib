@@ -1,5 +1,8 @@
 {% set name = 'sextractor-generic' %}
 {% set version = '2.19.5' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 about:

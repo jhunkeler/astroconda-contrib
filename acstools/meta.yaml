@@ -1,5 +1,8 @@
 {% set name = 'acstools' %}
 {% set version = '2.0.9' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '1' %}
 
 about:

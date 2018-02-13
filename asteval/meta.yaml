@@ -1,5 +1,8 @@
 {% set name = "asteval" %}
 {% set version = "0.9.11" %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set file_ext = "tar.gz" %}
 {% set hash_type = "sha256" %}
 {% set hash_value = "5995f1863c1685cd00df010663c15be880035a38b1e58c6340fb1d3adc499d8e" %}

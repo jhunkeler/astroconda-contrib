@@ -1,5 +1,8 @@
 {% set name = 'aprio' %}
 {% set version = '1.0.1' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set tag = 'v' + version %}
 {% set number = '0' %}
 

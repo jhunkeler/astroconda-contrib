@@ -1,5 +1,8 @@
 {% set name = 'glue-core' %}
 {% set version = '0.12.0' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 package:

@@ -1,5 +1,8 @@
 {% set name = 'sphinxcontrib-programoutput' %}
 {% set version = '0.8' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 about:

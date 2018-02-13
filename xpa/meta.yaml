@@ -1,6 +1,9 @@
 {% set name = 'xpa' %}
 {% set version = '2.1.18' %}
-{% set tag = 'v'+version %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
+{% set tag = 'v' + version %}
 {% set number = '0' %}
 
 about:

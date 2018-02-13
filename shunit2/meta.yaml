@@ -1,5 +1,8 @@
 {% set name = 'shunit2' %}
 {% set version = '2.0.3' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 about:

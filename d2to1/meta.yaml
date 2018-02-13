@@ -1,5 +1,8 @@
 {% set name = 'd2to1' %}
 {% set version = '0.2.12' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
 {% set number = '0' %}
 
 about:

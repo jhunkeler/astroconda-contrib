@@ -1,6 +1,9 @@
 {% set name = 'ginga' %}
 {% set version = '2.6.6' %}
-{% set tag = 'v2.6.6' %}
+{% if version[0] == 'v' %}
+{%   set version = version[1:] %}
+{% endif %}
+{% set tag = 'v' ~ version %}
 {% set number = '0' %}
 
 about:
