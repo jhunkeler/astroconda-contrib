@@ -4,7 +4,7 @@
 {%   set version = version[1:] %}
 {% endif %}
 {% set tag = 'v' + version %}
-{% set number = '0' %}
+{% set number = '1' %}
 
 about:
     home: https://github.com/ericmandel/{{ name }}

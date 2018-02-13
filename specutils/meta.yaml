@@ -4,7 +4,7 @@
 {%   set version = version[1:] %}
 {% endif %}
 {% set tag = 'v' + version %}
-{% set number = '1' %}
+{% set number = '2' %}
 
 about:
     home: https://github.com/astropy/specutils

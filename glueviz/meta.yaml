@@ -7,7 +7,7 @@
 {% if version[0] == 'v' %}
 {%   set version = version[1:] %}
 {% endif %}
-{% set number = '0' %}
+{% set number = '1' %}
 
 package:
   name: {{ name }}
