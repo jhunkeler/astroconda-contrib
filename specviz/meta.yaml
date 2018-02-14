@@ -22,7 +22,7 @@ requirements:
     - astropy
     - cython
     - docopt
-    - specutils
+    - specutils <=0.2.2
     - py-expression-eval
     - pyyaml
     - pyqtgraph >=0.9.11
@@ -39,7 +39,7 @@ requirements:
     - astropy
     - cython
     - docopt
-    - specutils
+    - specutils <=0.2.2
     - py-expression-eval
     - pyyaml
     - pyqtgraph >=0.9.11
@@ -54,7 +54,7 @@ requirements:
 test:
   requires:
     - astropy
-    - specutils
+    - specutils <=0.2.2
   imports:
     - specviz
 
