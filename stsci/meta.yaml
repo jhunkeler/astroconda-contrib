@@ -26,7 +26,6 @@ requirements:
     - ds9 >=7.1
     - fftw >=3.3.4
     - htc_utils >=0.1
-    - purge_path >=1.0.0
     - pyds9 >=1.8.1
     - pyfftw >=0.9.2
     - numpy
