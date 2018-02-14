@@ -23,7 +23,6 @@ requirements:
     build:
     - d2to1
     - astropy >=1.1
-    - pytools
     - setuptools
     - stsci.distutils
     - numpy {{ numpy }}
@@ -31,7 +30,6 @@ requirements:
     run:
     - astropy >=1.1
     - numpy
-    - pytools
     - stsci.distutils
     - python
 
