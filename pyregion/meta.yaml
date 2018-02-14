@@ -1,12 +1,12 @@
 {% set name = 'pyregion' %}
-{% set version = '1.1.2' %}
+{% set version = '2.0' %}
 {% if version[0] == 'v' %}
 {%   set version = version[1:] %}
 {% endif %}
-{% set number = '2' %}
+{% set number = '0' %}
 
 about:
-    home: https://github.com/spacetelescope/{{ name }}
+    home: https://github.com/astropy/{{ name }}
     license: BSD
     summary: Python parser for ds9 region files
 
@@ -19,12 +19,15 @@ package:
 
 requirements:
     build:
-    - d2to1
+    - astropy
+    - cython
     - numpy {{ numpy }}
     - pyparsing
     - python {{ python }}
     - setuptools
     run:
+    - astropy
+    - cython
     - numpy
     - pyparsing
     - setuptools
@@ -32,7 +35,7 @@ requirements:
 
 source:
     git_tag: {{ version }}
-    git_url: https://github.com/spacetelescope/{{ name }}.git
+    git_url: https://github.com/astropy/{{ name }}.git
 
 test:
     imports:
