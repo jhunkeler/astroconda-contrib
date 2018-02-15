@@ -29,6 +29,7 @@ requirements:
     - pyqt
     - qtpy
     - scipy
+    - spectral-cube
     - yaml
     - setuptools
     - six
@@ -46,6 +47,7 @@ requirements:
     - pyqt
     - qtpy
     - scipy
+    - spectral-cube
     - yaml
     - six
     - numpy
