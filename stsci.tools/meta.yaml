@@ -23,6 +23,7 @@ requirements:
     build:
     - astropy >=1.1
     - setuptools
+    - pytest-runner
     - numpy {{ numpy }}
     - python {{ python }}
 
