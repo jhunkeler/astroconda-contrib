@@ -19,10 +19,11 @@ package:
 
 requirements:
     build:
+    - d2to1
+    - stsci.distutils
     - astropy >=1.1
     - numpy {{ numpy }}
     - scipy
-    - stsci.distutils
     - stsci.tools
     - setuptools
     - python {{ python }}
