@@ -20,9 +20,11 @@ package:
 requirements:
     build:
       - curl
+      - gcc [osx]
 
     run:
       - curl
+      - libgcc [osx]
 
 source:
     fn: {{ name }}{{ version_short }}.tar.gz
