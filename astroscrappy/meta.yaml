@@ -1,0 +1,37 @@
+{% set name = 'astroscrappy' %}
+{% set version = '1.0.5' %}
+{% set tag = 'v' + version %}
+{% set number = '0' %}
+
+about:
+  home: https://github.com/astropy/astroscrappy
+  license: BSD
+  summary: Speedy Cosmic Ray Annihilation Package in Python
+
+build:
+  number: {{ number }}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+requirements:
+  build:
+    - astropy
+    - cython
+    - setuptools <38.5.1
+    - numpy {{ numpy }}
+    - python {{ python }}
+
+  run:
+    - astropy
+    - numpy
+    - python
+
+source:
+  git_tag: {{ tag }}
+  git_url: https://github.com/astropy/{{ name }}.git
+
+test:
+  imports:
+    - astroscrappy
