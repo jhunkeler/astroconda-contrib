@@ -19,20 +19,22 @@ package:
 requirements:
   build:
     - astropy >=1.0
-    - scipy
+    - decorator
     - astroscrappy
     - reproject
     - scikit-image
+    - scipy
     - setuptools
     - numpy {{ numpy }}
     - python {{ python }}
 
   run:
     - astropy >=1.0
-    - scipy
     - astroscrappy
+    - decorator
     - reproject
     - scikit-image
+    - scipy
     - numpy
     - python
 
