@@ -17,6 +17,7 @@ package:
 
 requirements:
     build:
+    - cio-bt [win]
     - d2to1
     - stsci.distutils
     - numpy {{ numpy }}
