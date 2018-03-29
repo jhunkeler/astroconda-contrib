@@ -21,13 +21,12 @@ requirements:
     - numpy {{ numpy }}
     - pyparsing
     - python {{ python }}
-    - setuptools
+    - setuptools <38.5.1
     run:
     - astropy
     - cython
     - numpy
     - pyparsing
-    - setuptools
     - python
 
 source:
