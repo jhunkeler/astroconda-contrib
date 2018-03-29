@@ -1,6 +1,6 @@
 {% set name = 'drizzlepac' %}
-{% set version = '2.1.22' %}
-{% set number = '1' %}
+{% set version = '2.2.0a' %}
+{% set number = '0' %}
 
 about:
     home: https://github.com/spacetelescope/{{ name }}
