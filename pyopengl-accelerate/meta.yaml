@@ -28,11 +28,13 @@ requirements:
   build:
     - cython
     - numpy {{ numpy }}
+    - pyopengl =={{ version }}
     - python {{ python }}
     - setuptools
 
   run:
     - numpy
+    - pyopengl =={{ version }}
     - python
 
 test:

@@ -25,12 +25,10 @@ build:
 
 requirements:
   build:
-    - pyopengl-accelerate {{ version }}
     - python {{ python }}
     - setuptools
 
   run:
-    - pyopengl-accelerate {{ version }}
     - python
 
 test:
