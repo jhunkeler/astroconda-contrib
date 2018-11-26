@@ -1,5 +1,5 @@
 {% set name = 'stsci-data-analysis' %}
-{% set version = '2.1.1' %}
+{% set version = '2.2.0' %}
 {% set number = '0' %}
 
 about:
@@ -25,7 +25,6 @@ requirements:
       - astroimtools >=0.1.1
       - cubeviz >=0.0.2
       - glueviz >=0.12.0
-      - glue-ginga >=0.2
       - glue-vispy-viewers >=0.9
       - gwcs >=0.8.0
       - mosviz >=0.1.1
