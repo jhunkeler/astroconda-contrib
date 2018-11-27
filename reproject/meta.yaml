@@ -1,7 +1,7 @@
 {% set name = 'reproject' %}
 {% set version = '0.4' %}
 {% set tag = 'v' + version %}
-{% set number = '0' %}
+{% set number = '1' %}
 
 about:
   home: http://reproject.readthedocs.io/
@@ -22,7 +22,7 @@ requirements:
     - astropy-healpix
     - cython
     - scipy >=0.9
-    - setuptools <38.5.1
+    - setuptools
     - numpy {{ numpy }}
     - python {{ python }}
 
