@@ -1,7 +1,7 @@
 {% set name = 'webbpsf' %}
 {% set version = '0.7.0' %}
 {% set tag = 'v' + version %}
-{% set number = '0' %}
+{% set number = '1' %}
 
 about:
     home: https://webbpsf.readthedocs.io
@@ -31,6 +31,7 @@ requirements:
     - ipywidgets
     - jwxml
     - pysiaf >=0.1.8
+
     run:
     - astropy >=1.2
     - numpy {{numpy}}
@@ -47,7 +48,7 @@ requirements:
 
 source:
     git_tag: {{ tag }}
-    git_url: https://github.com/mperrin/webbpsf
+    git_url: https://github.com/spacetelescope/webbpsf
 
 test:
     commands:
