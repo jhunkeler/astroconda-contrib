@@ -3,7 +3,8 @@ if [[ -z ${PKG_NAME} ]]; then
     exit 1
 fi
 
-dest=$PREFIX/share/${PKG_NAME}
+pkg_name=$(echo ${PKG_NAME} | tr '-' '_')
+dest="${PREFIX}/share/${pkg_name}"
 usedir="$(pwd)"
 
 if [[ -d ${usedir}/work ]]; then

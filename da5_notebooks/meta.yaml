@@ -1,5 +1,6 @@
 {% set name = 'da5-notebooks' %}
-{% set version = 'TBD' %}
+{% set version = '1.0' %}
+{% set tag = 'v' + version %}
 {% set number = '0' %}
 
 about:
@@ -15,5 +16,5 @@ package:
   version: {{ version }}
 
 source:
-  git_tag: {{ version }}
+  git_tag: {{ tag }}
   git_url: https://github.com/spacetelescope/{{ name }}.git
