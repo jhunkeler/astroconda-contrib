@@ -1,7 +1,7 @@
 {% set name = 'specutils' %}
 {% set version = '0.2.2' %}
 {% set tag = 'v' + version %}
-{% set number = '2' %}
+{% set number = '3' %}
 
 about:
     home: https://github.com/astropy/specutils
