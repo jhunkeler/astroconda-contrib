@@ -23,12 +23,15 @@ requirements:
       - asdf >=1.3.1
       - astroimtools >=0.1.1
       #- cubeviz <=0.2.1  # Excluded due to spec(utils|viz). and mosviz conflicts
+      - da5-notebooks >=1.0.0
       - gwcs >=0.9.1
       - mosviz >=0.1.1
-      - photutils >=0.4
-      - imexam >=0.8.0
+      - photutils >=0.6
+      - imexam >=0.8.1
       - specutils >=0.2.2  # Constraint permits manual cubeviz install
       - specviz >=0.5.0    # Constraint permits manual cubeviz install
-      - spherical-geometry >=1.0.12
+      - spherical-geometry >=1.2.6
       - stginga >=0.2.1
+      - tweakwcs >=0.1.1
+      - webbpsf >=0.8.0
       - python
