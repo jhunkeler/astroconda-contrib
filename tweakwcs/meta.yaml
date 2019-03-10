@@ -1,5 +1,5 @@
 {% set name = 'tweakwcs' %}
-{% set version = '0.4.2' %}
+{% set version = '0.4.3' %}
 {% set number = '0' %}
 about:
     home: https://github.com/spacetelescope/{{ name }}
@@ -22,9 +22,6 @@ requirements:
     - spherical-geometry
     - astropy >=3.1
     - setuptools
-    - numpydoc
-    - sphinx_rtd_theme
-    - stsci_rtd_theme
     - numpy {{ numpy }}
     - python {{ python }}
     run:
