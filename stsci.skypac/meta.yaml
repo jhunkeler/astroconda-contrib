@@ -31,6 +31,7 @@ requirements:
     - spherical-geometry >=1.2.2
     - stsci.tools
     - stwcs
+    - numpy
     - python
 
 source:

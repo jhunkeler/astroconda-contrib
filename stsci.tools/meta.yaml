@@ -1,6 +1,6 @@
 {% set name = 'stsci.tools' %}
 {% set version = '3.4.13' %}
-{% set number = '0' %}
+{% set number = '1' %}
 
 about:
     home: https://github.com/spacetelescope/stsci.tools
@@ -10,7 +10,6 @@ about:
 
 build:
     number: {{ number }}
-    preserve_egg_dir: 'yes'
 
 package:
     name: {{ name }}

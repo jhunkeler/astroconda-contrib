@@ -1,6 +1,6 @@
 {% set name = 'stsci.convolve' %}
 {% set version = '2.2.2' %}
-{% set number = '0' %}
+{% set number = '1' %}
 
 about:
     home: https://github.com/spacetelescope/{{ name }}
@@ -9,7 +9,6 @@ about:
 
 build:
     number: {{ number }}
-    preserve_egg_dir: 'yes'
 
 package:
     name: {{ name }}
