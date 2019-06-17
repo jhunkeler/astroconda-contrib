@@ -1,6 +1,6 @@
 {% set name = 'fitsblender' %}
-{% set version = '0.3.2' %}
-{% set number = '1' %}
+{% set version = '0.3.5' %}
+{% set number = '0' %}
 
 about:
     home: http://github.com/spacetelescope/{{ name }}
