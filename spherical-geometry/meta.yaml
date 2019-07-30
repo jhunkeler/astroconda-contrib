@@ -1,6 +1,6 @@
 {% set name = 'spherical-geometry' %}
 {% set reponame = 'spherical_geometry' %}
-{% set version = '1.2.10' %}
+{% set version = '1.2.14' %}
 {% set number = '0' %}
 
 about:
@@ -20,6 +20,7 @@ requirements:
     - astropy >=1.1
     - matplotlib
     - setuptools
+    - setuptools_scm
     - numpy {{ numpy }}
     - python {{ python }}
     run:
