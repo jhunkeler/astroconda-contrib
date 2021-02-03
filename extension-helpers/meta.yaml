@@ -1,5 +1,6 @@
 {% set name = "extension-helpers" %}
 {% set version = "0.1" %}
+{% set number = "1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -10,13 +11,13 @@ source:
   sha256: ac8a6fe91c6d98986a51a9f08ca0c7945f8fd70d95b662ced4040ae5eb973882
 
 build:
-  number: 0
+  number: {{ number }}
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv "
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python }}
   run:
     - python
 
