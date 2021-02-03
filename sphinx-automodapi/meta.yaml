@@ -1,5 +1,6 @@
 {% set name = "sphinx-automodapi" %}
 {% set version = "0.10" %}
+{% set number = "1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -10,13 +11,13 @@ source:
   sha256: 5c989bfe37f555f635e8fbb650859df391556981f5a436507fb3241794fd26c6
 
 build:
-  number: 0
+  number: {{ number }}
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python }}
     - sphinx >=1.3
   run:
     - python
