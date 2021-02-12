@@ -1,0 +1,519 @@
+From 7dddc722ed7395a82d37912976d08d584e0e8685 Mon Sep 17 00:00:00 2001
+From: Joseph Hunkeler <jhunkeler@users.noreply.github.com>
+Date: Fri, 12 Feb 2021 14:34:41 -0500
+Subject: [PATCH 546/546] Fix circular dependency and status redefinition
+ (#542)
+
+* Squashed bugs
+
+* Removed circular dependency in acscte (acsforwardmodel.e)
+* acscte.e now sets forwardModelOnly based on the name of the program executing
+*     NOTE: decided against using a symlink to avoid portibility issues later
+* Replaced global "int status;" buckshot. There can only be one global status.
+
+* Enforce linkage to realtime library
+---
+ hstio/hstio.c                               |  3 +++
+ include/imphttab.h                          |  2 +-
+ pkg/acs/calacs/acs2d/main2d.c               |  3 ++-
+ pkg/acs/calacs/acsccd/mainccd.c             |  4 +++-
+ pkg/acs/calacs/acscte/forward_model/main.c  | 23 -------------------
+ pkg/acs/calacs/acscte/forward_model/wscript | 25 ---------------------
+ pkg/acs/calacs/acscte/maincte.c             | 23 ++++++++++++++++---
+ pkg/acs/calacs/acscte/wscript               | 11 ++-------
+ pkg/acs/calacs/acsrej/mainrej.c             |  4 +++-
+ pkg/acs/calacs/acssum/mainsum.c             |  3 ++-
+ pkg/acs/calacs/calacs/acsmain.c             |  2 +-
+ pkg/acs/calacs/wscript                      |  2 --
+ pkg/imphttab/getphttab.c                    |  1 +
+ pkg/stis/calstis/cs1/dophot.c               |  2 +-
+ pkg/stis/calstis/cs11/cs11.c                |  2 +-
+ pkg/wfc3/calwf3/calwf3/wf3main.c            |  2 +-
+ pkg/wfc3/calwf3/wf32d/main2d.c              |  3 ++-
+ pkg/wfc3/calwf3/wf3ccd/mainccd.c            |  3 ++-
+ pkg/wfc3/calwf3/wf3ir/mainir.c              |  3 ++-
+ pkg/wfc3/calwf3/wf3rej/mainrej.c            |  4 +++-
+ pkg/wfc3/calwf3/wf3sum/mainsum.c            |  3 ++-
+ wscript                                     |  3 +++
+ 22 files changed, 55 insertions(+), 76 deletions(-)
+ delete mode 100644 pkg/acs/calacs/acscte/forward_model/main.c
+ delete mode 100644 pkg/acs/calacs/acscte/forward_model/wscript
+
+diff --git a/hstio/hstio.c b/hstio/hstio.c
+index d19a2e99..d4a5a607 100644
+--- a/hstio/hstio.c
++++ b/hstio/hstio.c
+@@ -116,6 +116,9 @@
+ # include "hstio.h"
+ # include "hstcalerr.h"
+ 
++/* Global status tracker */
++int status;
++
+ int fcloseNull(FILE * stream)
+ {
+     if (!stream)
+diff --git a/include/imphttab.h b/include/imphttab.h
+index b2a34b90..1413039c 100644
+--- a/include/imphttab.h
++++ b/include/imphttab.h
+@@ -13,7 +13,7 @@
+ /* Standard string for use in Error Messages */
+ /*char MsgText[CHAR_LINE_LENGTH+1];*/
+ void errchk ();                 /* HSTIO error check */
+-int status;
++extern int status;              /* Error status */
+ 
+ /* Codes to specify whether a reference file exists or not. */
+ # define EXISTS_YES       1
+diff --git a/pkg/acs/calacs/acs2d/main2d.c b/pkg/acs/calacs/acs2d/main2d.c
+index ebf4d1ed..2607169a 100644
+--- a/pkg/acs/calacs/acs2d/main2d.c
++++ b/pkg/acs/calacs/acs2d/main2d.c
+@@ -5,7 +5,7 @@
+ # include <time.h>
+ # include <string.h>
+ 
+-int status = 0;			/* zero is OK */
++extern int status;			/* zero is OK */
+ 
+ # include <c_iraf.h>		/* for c_irafinit */
+ #include "hstcal_memory.h"
+@@ -96,6 +96,7 @@ int main (int argc, char **argv) {
+     int GetSwitch (Hdr *, char *, int *);
+     int Get2dSw (CalSwitch *, Hdr *);
+ 
++    status = 0;
+     c_irafinit (argc, argv);
+ 
+     /* Allocate space for file names. */
+diff --git a/pkg/acs/calacs/acsccd/mainccd.c b/pkg/acs/calacs/acsccd/mainccd.c
+index b784b62f..0858a225 100644
+--- a/pkg/acs/calacs/acsccd/mainccd.c
++++ b/pkg/acs/calacs/acsccd/mainccd.c
+@@ -5,7 +5,7 @@
+ # include <time.h>
+ # include <string.h>
+ 
+-int status = 0;			/* zero is OK */
++extern int status;			/* zero is OK */
+ 
+ # include <c_iraf.h>		/* for c_irafinit */
+ #include "hstcal_memory.h"
+@@ -96,6 +96,8 @@ int main (int argc, char **argv) {
+     int LoadHdr (char *, Hdr *);
+     int GetSwitch (Hdr *, char *, int *);
+ 
++    status = 0;
++
+     c_irafinit (argc, argv);
+ 
+     PtrRegister ptrReg;
+diff --git a/pkg/acs/calacs/acscte/forward_model/main.c b/pkg/acs/calacs/acscte/forward_model/main.c
+deleted file mode 100644
+index a30fc9e1..00000000
+--- a/pkg/acs/calacs/acscte/forward_model/main.c
++++ /dev/null
+@@ -1,23 +0,0 @@
+-
+-#include <stdlib.h>
+-#include <string.h>
+-#include <assert.h>
+-
+-extern int doMainCTE (int argc, char **argv);
+-
+-int main (int argc, char **argv)
+-{
+-    // alloc a new argv + 1 for the above new option
+-    char ** newArgv = malloc((argc + 1)*sizeof(char*));
+-    assert(newArgv);
+-
+-    // Copy the old pointers to the new one
+-    memcpy(newArgv, argv, argc*sizeof(char*));
+-
+-    // Add the new opt and inc argc
+-    newArgv[argc++] = "--forwardModelOnly";
+-
+-    const int status = doMainCTE(argc, newArgv);
+-    free(newArgv);
+-    return status;
+-}
+diff --git a/pkg/acs/calacs/acscte/forward_model/wscript b/pkg/acs/calacs/acscte/forward_model/wscript
+deleted file mode 100644
+index a1bee7a1..00000000
+--- a/pkg/acs/calacs/acscte/forward_model/wscript
++++ /dev/null
+@@ -1,25 +0,0 @@
+-# vim: set syntax=python:
+-
+-def build(bld):
+-    t = bld.program(
+-        source = ['../acscte.c',
+-                  '../docte.c',
+-                  '../dopcte.c',
+-                  '../dopcte-gen2.c',
+-                  '../getcteflag.c',
+-                  '../getctesw.c',
+-                  '../pcte_fixycte.c',
+-                  '../pcte_funcs.c',
+-                  '../maincte.c',
+-                  'main.c'
+-                  ],
+-        target = 'acscteforwardmodel.e',
+-        includes = ['.',
+-                    '../../../../../ctegen2',
+-                    '../../../../../include'],
+-        use = ['hstcallib', 'calacs', 'imphttab', 'ctegen2'] + bld.env.LOCAL_LIBS,
+-        lib = bld.env.EXTERNAL_LIBS,
+-        libpath = bld.env.LIBPATH,
+-        rpath=bld.env.LIBPATH_CFITSIO,
+-        install_path = '${PREFIX}/bin'
+-        )
+diff --git a/pkg/acs/calacs/acscte/maincte.c b/pkg/acs/calacs/acscte/maincte.c
+index e73542d3..3ba132ca 100644
+--- a/pkg/acs/calacs/acscte/maincte.c
++++ b/pkg/acs/calacs/acscte/maincte.c
+@@ -5,8 +5,9 @@
+ # include <time.h>
+ # include <string.h>
+ #include <stdbool.h>
++#include <limits.h>
+ 
+-int status = 0;			/* zero is OK */
++extern int status;			/* zero is OK */
+ 
+ # include <c_iraf.h>		/* for c_irafinit */
+ #include "hstcal_memory.h"
+@@ -26,6 +27,7 @@ int status = 0;			/* zero is OK */
+ #  include <omp.h>
+ # endif
+ 
++static char *program;
+ struct TrlBuf trlbuf = { 0 };
+ 
+ /* Standard string buffer for use in messages */
+@@ -43,7 +45,7 @@ int doMainCTE (int argc, char **argv);
+ 
+ static void printSyntax()
+ {
+-    printf ("syntax:  acscte.e [--help] [-t] [-v] [-q] [--version] [--gitinfo] [-1|--nthreads <N>] [--ctegen <1|2>] [--pctetab <path>] [--forwardModelOnly] input [output]\n");
++    printf ("syntax:  %s [--help] [-t] [-v] [-q] [--version] [--gitinfo] [-1|--nthreads <N>] [--ctegen <1|2>] [--pctetab <path>] [--forwardModelOnly] input [output]\n", program);
+ }
+ static void printHelp(void)
+ {
+@@ -102,6 +104,11 @@ int doMainCTE (int argc, char **argv) {
+     int LoadHdr (char *, Hdr *);
+     int GetSwitch (Hdr *, char *, int *);
+ 
++    /* For program basename */
++    char program_buf[PATH_MAX];
++
++    status = 0;
++
+     c_irafinit (argc, argv);
+ 
+     PtrRegister ptrReg;
+@@ -133,6 +140,16 @@ int doMainCTE (int argc, char **argv) {
+     /* Initial values. */
+     initSwitch (&ccd_sw);
+ 
++    /* Obtain program basename */
++    if ((program = strrchr(argv[0], '/')) != NULL) {
++        strcpy(program_buf, program + 1);
++        program = program_buf;
++    }
++
++    if (!strcmp(program, "acsforwardmodel.e")) {
++        forwardModelOnly = true;
++    }
++
+     for (i = 1;  i < argc;  i++) {
+ 
+         if (argv[i][0] == '-') {
+@@ -213,7 +230,7 @@ int doMainCTE (int argc, char **argv) {
+                 if (argv[i][1] == '-')
+                 {
+                     printf ("Unrecognized option %s\n", argv[i]);
+-                    printSyntax();
++                    printSyntax(program);
+                     freeOnExit(&ptrReg);
+                     exit (ERROR_RETURN);
+                 }
+diff --git a/pkg/acs/calacs/acscte/wscript b/pkg/acs/calacs/acscte/wscript
+index 8b2ed837..419daf31 100644
+--- a/pkg/acs/calacs/acscte/wscript
++++ b/pkg/acs/calacs/acscte/wscript
+@@ -2,15 +2,7 @@
+ 
+ def build(bld):
+     t = bld.program(
+-        source = ['acscte.c',
+-                  'docte.c',
+-                  'dopcte.c',
+-                  'dopcte-gen2.c',
+-                  'getcteflag.c',
+-                  'getctesw.c',
+-                  'pcte_fixycte.c',
+-                  'pcte_funcs.c',
+-                  'maincte.c',
++        source = ['maincte.c',
+                   'main.c'
+                   ],
+         target = 'acscte.e',
+@@ -23,3 +15,4 @@ def build(bld):
+         rpath=bld.env.LIBPATH_CFITSIO,
+         install_path = '${PREFIX}/bin'
+         )
++    bld.install_as('${PREFIX}/bin/acsforwardmodel.e', 'acscte.e')
+diff --git a/pkg/acs/calacs/acsrej/mainrej.c b/pkg/acs/calacs/acsrej/mainrej.c
+index 22ba2848..faa18593 100644
+--- a/pkg/acs/calacs/acsrej/mainrej.c
++++ b/pkg/acs/calacs/acsrej/mainrej.c
+@@ -14,7 +14,7 @@
+ # include "hstcalversion.h"
+ #include "trlbuf.h"
+ 
+-int status = 0;             /* zero is OK */
++extern int status;             /* zero is OK */
+ 
+ /* Standard string buffer for use in messages */
+ char MsgText[MSG_BUFF_LENGTH]; // Global char auto initialized to '\0'
+@@ -31,6 +31,8 @@ int main (int argc, char **argv) {
+     int AcsRej (char *, char *, char *, clpar *, int []);
+     void WhichError (int);
+ 
++    status = 0;
++
+     c_irafinit (argc, argv);
+ 
+     /* Initialize mtype to NULL to signal no change in ASN_MTYP for output*/
+diff --git a/pkg/acs/calacs/acssum/mainsum.c b/pkg/acs/calacs/acssum/mainsum.c
+index 7695e39c..4aa57de4 100644
+--- a/pkg/acs/calacs/acssum/mainsum.c
++++ b/pkg/acs/calacs/acssum/mainsum.c
+@@ -4,7 +4,7 @@
+ # include <stdlib.h>		/* calloc */
+ # include <string.h>
+ 
+-int status = 0;			/* zero is OK */
++extern int status;			/* zero is OK */
+ 
+ # include <c_iraf.h>		/* for c_irafinit */
+ 
+@@ -54,6 +54,7 @@ int main (int argc, char **argv) {
+ 	int MkName (char *, char *, char *, char *, char *, int);
+ 	void WhichError (int);
+ 
++    status = 0;
+ 	c_irafinit (argc, argv);
+ 
+ 	PtrRegister ptrReg;
+diff --git a/pkg/acs/calacs/calacs/acsmain.c b/pkg/acs/calacs/calacs/acsmain.c
+index 4f25864a..72fe0d28 100644
+--- a/pkg/acs/calacs/calacs/acsmain.c
++++ b/pkg/acs/calacs/calacs/acsmain.c
+@@ -17,7 +17,7 @@
+ /* CALACS driver: retrieves input table name and calls pipeline
+ */
+ 
+-int	status;		/* value of zero indicates OK */
++extern int	status;
+ struct TrlBuf trlbuf = { 0 };
+ 
+ /* Standard string buffer for use in messages */
+diff --git a/pkg/acs/calacs/wscript b/pkg/acs/calacs/wscript
+index cd089f63..7077b525 100644
+--- a/pkg/acs/calacs/wscript
++++ b/pkg/acs/calacs/wscript
+@@ -7,7 +7,6 @@ SUBDIRS = [
+     'acssum',
+     'acsccd',
+     'acscte',
+-    'acscte/forward_model',
+     'acs2d'
+     ]
+ 
+@@ -21,7 +20,6 @@ def build(bld):
+             'acsccd.e',
+             'acsrej.e',
+             'acscte.e',
+-            'acscteforwardmodel.e',
+             'acs2d.e',
+             'acssum.e'],
+         always=True)
+diff --git a/pkg/imphttab/getphttab.c b/pkg/imphttab/getphttab.c
+index 5b875329..daae641f 100644
+--- a/pkg/imphttab/getphttab.c
++++ b/pkg/imphttab/getphttab.c
+@@ -32,6 +32,7 @@ MDD: 03/2020 Ensure obs->obsmode is an empty string at the beginning of
+ # include "imphttab.h"
+ # include "c_iraf.h"  /* For Bool type */
+ 
++
+ /* Internal functions to be used to interpret IMPHTTAB ref tables */
+ static int OpenPhotTab (char *, char *, PhtCols *);
+ static int ReadPhotTab (PhtCols *, int, PhtRow *);
+diff --git a/pkg/stis/calstis/cs1/dophot.c b/pkg/stis/calstis/cs1/dophot.c
+index 93cfd5af..a9da1c99 100644
+--- a/pkg/stis/calstis/cs1/dophot.c
++++ b/pkg/stis/calstis/cs1/dophot.c
+@@ -59,7 +59,7 @@ StisInfo1 *sts     i: calibration switches, etc
+ SingleGroup *x    io: image to be calibrated; primary header is modified
+ */
+ 
+-	int status;
++	extern int status;
+ 
+ 	PhotPar obs;
+ 
+diff --git a/pkg/stis/calstis/cs11/cs11.c b/pkg/stis/calstis/cs11/cs11.c
+index f508d53b..b394f1e1 100644
+--- a/pkg/stis/calstis/cs11/cs11.c
++++ b/pkg/stis/calstis/cs11/cs11.c
+@@ -45,7 +45,7 @@ static void printHelp(void)
+ 
+ int main (int argc, char **argv) {
+ 
+-	int status;		/* zero is OK */
++	extern int status;		/* zero is OK */
+ 	char *wavlist;		/* list of input wavecal file names */
+ 	char *scilist;		/* list of input science file names */
+ 	char *outlist;		/* list of output file names */
+diff --git a/pkg/wfc3/calwf3/calwf3/wf3main.c b/pkg/wfc3/calwf3/calwf3/wf3main.c
+index c2e0da01..17547ec0 100644
+--- a/pkg/wfc3/calwf3/calwf3/wf3main.c
++++ b/pkg/wfc3/calwf3/calwf3/wf3main.c
+@@ -16,7 +16,7 @@
+ /* CALWF3 driver: retrieves input table name and calls pipeline
+  */
+ 
+-int	status;		/* value of zero indicates OK */
++extern int	status;
+ struct TrlBuf trlbuf = { 0 };
+ 
+ /* Standard string buffer for use in messages */
+diff --git a/pkg/wfc3/calwf3/wf32d/main2d.c b/pkg/wfc3/calwf3/wf32d/main2d.c
+index 2c7d2279..4c7cf98c 100644
+--- a/pkg/wfc3/calwf3/wf32d/main2d.c
++++ b/pkg/wfc3/calwf3/wf32d/main2d.c
+@@ -5,7 +5,7 @@
+ # include <time.h>
+ # include <string.h>
+ 
+-int status = 0;			/* zero is OK */
++extern int status;
+ 
+ #include "hstcal_memory.h"
+ #include "hstcal.h"
+@@ -91,6 +91,7 @@ int main (int argc, char **argv) {
+ 	void initCCDSwitches (CCD_Switch *);
+ 
+ /*===========================================================================*/
++    status = 0;
+ 
+ 	/* Initialize IRAF interface environment */
+ 	c_irafinit (argc, argv);
+diff --git a/pkg/wfc3/calwf3/wf3ccd/mainccd.c b/pkg/wfc3/calwf3/wf3ccd/mainccd.c
+index d29312ae..f62b87ca 100644
+--- a/pkg/wfc3/calwf3/wf3ccd/mainccd.c
++++ b/pkg/wfc3/calwf3/wf3ccd/mainccd.c
+@@ -5,7 +5,7 @@
+ # include <time.h>
+ # include <string.h>
+ 
+-int status = 0;			/* zero is OK */
++extern int status;
+ 
+ #include "hstcal_memory.h"
+ #include "hstcal.h"
+@@ -87,6 +87,7 @@ int main (int argc, char **argv) {
+ 	int CompareNumbers (int, int, char *);
+ 
+ /*===========================================================================*/
++    status = 0;
+ 
+ 	/* Initialize IRAF interface environment */
+ 	c_irafinit (argc, argv);
+diff --git a/pkg/wfc3/calwf3/wf3ir/mainir.c b/pkg/wfc3/calwf3/wf3ir/mainir.c
+index 6fa2061e..b14b0d10 100644
+--- a/pkg/wfc3/calwf3/wf3ir/mainir.c
++++ b/pkg/wfc3/calwf3/wf3ir/mainir.c
+@@ -5,7 +5,7 @@
+ # include <time.h>
+ # include <string.h>
+ 
+-int status = 0;			/* zero is OK */
++extern int status;
+ 
+ #include "hstcal_memory.h"
+ #include "hstcal.h"
+@@ -87,6 +87,7 @@ int main (int argc, char **argv) {
+ 	int CompareNumbers (int, int, char *);
+ 
+ /*===========================================================================*/
++    status = 0;
+ 
+ 	/* Initialize IRAF interface environment */
+ 	c_irafinit (argc, argv);
+diff --git a/pkg/wfc3/calwf3/wf3rej/mainrej.c b/pkg/wfc3/calwf3/wf3rej/mainrej.c
+index 12cec69f..bc4f97cc 100644
+--- a/pkg/wfc3/calwf3/wf3rej/mainrej.c
++++ b/pkg/wfc3/calwf3/wf3rej/mainrej.c
+@@ -15,7 +15,7 @@
+ # include "hstcalversion.h"
+ # include "trlbuf.h"
+ 
+-int status = 0;             /* zero is OK */
++extern int status;
+ struct TrlBuf trlbuf = { 0 };
+ 
+ /* Standard string buffer for use in messages */
+@@ -32,6 +32,8 @@ int main (int argc, char **argv) {
+     int Wf3Rej (char *, char *, char *, clpar *, int []);
+     void WhichError (int);
+ 
++    status = 0;
++
+     /* Initialize the IRAF interface */
+     c_irafinit (argc, argv);
+ 
+diff --git a/pkg/wfc3/calwf3/wf3sum/mainsum.c b/pkg/wfc3/calwf3/wf3sum/mainsum.c
+index 7120feb8..f0976382 100644
+--- a/pkg/wfc3/calwf3/wf3sum/mainsum.c
++++ b/pkg/wfc3/calwf3/wf3sum/mainsum.c
+@@ -4,7 +4,7 @@
+ # include <stdlib.h>		/* calloc */
+ # include <string.h>
+ 
+-int status = 0;			/* zero is OK */
++extern int status;
+ 
+ #include "hstcal_memory.h"
+ #include "hstcal.h"
+@@ -55,6 +55,7 @@ int main (int argc, char **argv) {
+ 	void WhichError (int);
+ 
+ /*===========================================================================*/
++    status = 0;
+ 
+ 	/* Initialize IRAF interface */
+ 	c_irafinit (argc, argv);
+diff --git a/wscript b/wscript
+index e298ef9d..0b2d45c5 100644
+--- a/wscript
++++ b/wscript
+@@ -340,8 +340,11 @@ def configure(conf):
+     # A list of external libraries that are typically linked with the
+     # executables
+     conf.env.EXTERNAL_LIBS = ['m']
++
+     if sys.platform.startswith('sunos'):
+         conf.env.EXTERNAL_LIBS += ['socket', 'nsl']
++    elif sys.platform.startswith('linux'):
++        conf.env.EXTERNAL_LIBS += ['rt']
+ 
+     # A list of paths in which to search for external libraries
+     conf.env.LIBPATH = []
+-- 
+2.29.2
+

@@ -1,6 +1,6 @@
 {% set name = 'hstcal' %}
 {% set version = '2.5.0' %}
-{% set number = '0' %}
+{% set number = '2' %}
 
 about:
     home: https://github.com/spacetelescope/{{ name }}
@@ -9,6 +9,9 @@ about:
 
 build:
     number: {{ number }}
+
+patch:
+  - 0546-Fix-circular-dependency-and-status-redefinition-542.patch
 
 package:
     name: {{ name }}
